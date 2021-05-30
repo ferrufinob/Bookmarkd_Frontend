@@ -4,19 +4,20 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
-import { createStore, compose, applyMiddleware } from "redux";
-import { reducer } from "/redux/reducer";
+// allows us to set up our store, add thunk, add chrome dev tools
+import { createStore, applyMiddleware, compose } from "redux";
+// We build this:
+import { reducer } from "./redux/reducers/rootReducer";
+// Gives us redux
 import { Provider } from "react-redux";
+// adds ability to make asynchronous actions for Redux
 import thunk from "redux-thunk";
+// Gives us Router
 import { BrowserRouter as Router } from "react-router-dom";
 
-const store = createStore(
-  reducer,
-  compose(
-    applyMiddleware(thunk),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  )
-);
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
 
 ReactDOM.render(
   <React.StrictMode>
