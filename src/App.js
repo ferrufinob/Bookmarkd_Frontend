@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Switch, Route } from "react-router-dom";
 import "./App.css";
-import PinsContainer from "./container/PinsContainer";
+import PinsContainer from "./containers/PinsContainer";
+import PinDisplay from "./components/pin/PinDisplay";
 import { getPins } from "./redux/actions/pinsActions";
-import { loginUserFetch } from "./redux/actions/userActions";
-import Login from "./components/Signup";
-import Signup from "./components/Login";
+// import { loginUserFetch } from "../redux/actions/userActions";
+import Login from "./components/user/Login";
+import Signup from "./components/user/Signup";
 class App extends Component {
   componentDidMount() {
     this.props.getPins();
@@ -14,10 +16,14 @@ class App extends Component {
   render() {
     return (
       <div>
+        <Switch>
+          <Route path="/pins/:id" component={PinDisplay} />
+          <Route path="/pins" component={PinsContainer} />
+        </Switch>
         {/* this.props.user id? routes patch : <Login /> */}
-        <Login />
+        {/* <Login />
         <Signup />
-        <PinsContainer />
+        <PinsContainer /> */}
       </div>
     );
   }

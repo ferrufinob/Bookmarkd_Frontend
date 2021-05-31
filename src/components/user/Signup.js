@@ -1,7 +1,7 @@
 // signup ? "Sign Up : "Login"
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { signupUserFetch } from "../redux/actions/userActions";
+import { signupUserFetch } from "../../redux/actions/userActions";
 
 class Login extends Component {
   state = {

@@ -1,12 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
-import Pin from "../components/Pin";
+import PinsList from "../components/pin/PinsList";
 
 const PinsContainer = (props) => {
   return (
     <div>
       {props.pins.map((pin) => (
-        <Pin key={pin.id} {...pin} />
+        <PinsList key={pin.id} {...pin} />
       ))}
     </div>
   );
