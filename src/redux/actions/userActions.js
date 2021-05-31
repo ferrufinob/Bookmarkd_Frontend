@@ -15,7 +15,7 @@ export const loginUserFetch = (userInfo) => {
         if (user.error) {
           alert(user.error);
         } else {
-          localStorage.setItem("token", user.jwt);
+          localStorage.setItem("token", user.token);
           dispatch({
             type: "GET_USER",
             payload: user,
@@ -39,7 +39,7 @@ export const signupUserFetch = (userInfo) => {
         if (user.error) {
           alert(user.error);
         } else {
-          localStorage.setItem("token", user.jwt);
+          localStorage.setItem("token", user.token);
           dispatch({
             type: "GET_USER",
             payload: user,
