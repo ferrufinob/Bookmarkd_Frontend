@@ -1,22 +1,21 @@
-// signup ? "Sign Up : "Login"
 import React, { Component } from "react";
 
-class Login extends Component {
+class Signup extends Component {
   state = {
     username: "",
-    email: "",
     password: "",
   };
   render() {
     return (
       <form>
+        <label>Username:</label>
         <input type="text" name="username" />
-        <input type="email" name="email" />
+        <label>Password:</label>
         <input type="password" name="password" />
-        <button type="submit">Login</button>
+        <button type="submit">Log in</button>
       </form>
     );
   }
 }
 
-export default Login;
+export default Signup;

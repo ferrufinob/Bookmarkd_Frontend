@@ -3,7 +3,9 @@ import { connect } from "react-redux";
 import "./App.css";
 import PinsContainer from "./container/PinsContainer";
 import { getPins } from "./redux/actions/pinsActions";
-import Login from "./components/Login";
+import { loginUserFetch } from "./redux/actions/userActions";
+import Login from "./components/Signup";
+import Signup from "./components/Login";
 class App extends Component {
   componentDidMount() {
     this.props.getPins();
@@ -14,6 +16,7 @@ class App extends Component {
       <div>
         {/* this.props.user id? routes patch : <Login /> */}
         <Login />
+        <Signup />
         <PinsContainer />
       </div>
     );
