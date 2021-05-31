@@ -14,3 +14,16 @@ export const getPins = () => {
       );
   };
 };
+
+export const setSelectedPin = (id) => {
+  return (dispatch) => {
+    fetch(API + "/pins/" + id)
+      .then((res) => res.json())
+      .then((pin) =>
+        dispatch({
+          type: "SET_SELECTED_PIN",
+          payload: pin,
+        })
+      );
+  };
+};
