@@ -3,11 +3,10 @@ import { connect } from "react-redux";
 import { setSelectedPin } from "../../redux/actions/pinsActions";
 class PinDisplay extends Component {
   componentDidMount() {
-    // get the id from the route(grab 1 from "pins/1")
-    // give this.props.match.params a key of id when we define "restaurants/:id" in our Route path in App.js
     const id = this.props.match.params.id;
     this.props.setSelectedPin(id);
   }
+
   render() {
     const { title, description, image, siteUrl } = this.props;
     return (

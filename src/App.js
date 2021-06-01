@@ -7,7 +7,6 @@ import {
   fetchLoggedInUser,
 } from "./redux/actions/userActions";
 
-import NavBar from "./components/AuthorizedUser/NavBar";
 import PinsContainer from "./containers/PinsContainer";
 import PinDisplay from "./components/pin/PinDisplay";
 import Welcome from "./components/user/Welcome";

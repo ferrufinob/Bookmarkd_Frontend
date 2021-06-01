@@ -5,7 +5,7 @@ const PinsList = (props) => {
   const { title, image, id } = props;
   return (
     <div>
-      <Link to={"pins/" + id}>
+      <Link to={`/pins/${id}`}>
         <img src={image} alt={title} />
       </Link>
       <p>{title}</p>
