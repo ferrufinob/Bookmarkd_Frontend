@@ -22,9 +22,6 @@ const Navbar = () => {
       <NavLink to="/newPin">
         <p>Add Pin</p>
       </NavLink>
-      <NavLink to="newPin">
-        <p>Add Pin</p>
-      </NavLink>
     </div>
   );
 };

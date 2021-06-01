@@ -1,7 +1,5 @@
 // signup ? "Sign Up : "Login"
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { signupUserFetch } from "../../redux/actions/userActions";
 
 class Login extends Component {
   state = {
@@ -18,7 +16,7 @@ class Login extends Component {
     event.preventDefault();
     const { username, email, password } = this.state;
     const body = { username: username, email: email, password: password };
-    this.props.signupUserFetch(body);
+    this.props.submitHandler(body);
   };
   render() {
     return (
@@ -40,4 +38,4 @@ class Login extends Component {
   }
 }
 
-export default connect(null, { signupUserFetch })(Login);
+export default Login;
