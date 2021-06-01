@@ -20,6 +20,7 @@ class App extends Component {
   // if not found push user to login
   componentDidMount() {
     this.props.fetchLoggedInUser(this.props.history);
+    console.log("mounting user");
   }
 
   signUpHandler = (user) => {
@@ -46,7 +47,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Navbar />
+        <Navbar user={this.props.user} />
         <Switch>
           <Route
             path="/login"

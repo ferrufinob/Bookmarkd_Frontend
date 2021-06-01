@@ -1,8 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const Navbar = () => {
-  console.log(localStorage.getItem("token"));
+const Navbar = (props) => {
+  // console.log(localStorage.getItem("token"));
+  console.log("in navbar", props.user);
   return (
     // if user is not logged in show login/signup links
 

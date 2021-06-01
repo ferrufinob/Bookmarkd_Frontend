@@ -17,6 +17,7 @@ class Signup extends Component {
     this.props.submitHandler(this.state);
   };
   render() {
+    console.log("signup");
     return (
       <form onSubmit={this.handleOnSubmit}>
         <label>Username:</label>

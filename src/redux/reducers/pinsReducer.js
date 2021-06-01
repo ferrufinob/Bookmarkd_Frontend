@@ -8,7 +8,10 @@ const pinsReducer = (state = initialState, action) => {
     case "SET_PINS":
       return { ...state, pins: action.payload };
     case "SET_SELECTED_PIN":
-      return { ...state, selectedPin: action.payload.pin };
+      return {
+        ...state,
+        selectedPin: action.payload.pin,
+      };
     default:
       return state;
   }

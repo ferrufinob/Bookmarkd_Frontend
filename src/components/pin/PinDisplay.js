@@ -9,6 +9,7 @@ class PinDisplay extends Component {
 
   render() {
     const { title, description, image, siteUrl } = this.props;
+    console.log("pin display", this.props);
     return (
       <div>
         <a href={siteUrl}>{title}</a>
