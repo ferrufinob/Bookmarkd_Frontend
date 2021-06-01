@@ -11,7 +11,7 @@ class PinsContainer extends Component {
   }
 
   render() {
-    console.log("inside pin", this.props);
+    console.log("inside pin container", this.props.user);
     const { user, pins } = this.props;
     return (
       <>

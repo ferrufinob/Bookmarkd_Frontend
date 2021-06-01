@@ -1,17 +1,16 @@
 const API = "http://localhost:3000/api/v1";
 
-// thunk allows us to return a function that takes in the argument of dispatch,
-// instead of a plain obj representing the object
+export const GET_PINS = (pins) => ({ type: "GET_PINS", payload: pins });
+export const SET_SELECTED_PIN = (id) => ({
+  type: "SET_SELECTED_PIN",
+  payload: id,
+});
+
 export const getPins = () => {
   return (dispatch) => {
     fetch(API + "/pins")
       .then((res) => res.json())
-      .then((pins) =>
-        dispatch({
-          type: "SET_PINS",
-          payload: pins,
-        })
-      );
+      .then((pins) => dispatch(GET_PINS(pins)));
   };
 };
 
@@ -19,11 +18,6 @@ export const setSelectedPin = (id) => {
   return (dispatch) => {
     fetch(API + "/pins/" + id)
       .then((res) => res.json())
-      .then((pin) =>
-        dispatch({
-          type: "SET_SELECTED_PIN",
-          payload: pin,
-        })
-      );
+      .then((pin) => dispatch(SET_SELECTED_PIN(pin)));
   };
 };

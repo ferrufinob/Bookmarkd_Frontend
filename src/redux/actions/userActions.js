@@ -1,6 +1,7 @@
 const API = "http://localhost:3000/api/v1";
 
-// TODO: add in better error handling
+export const GET_USER = (user) => ({ type: "GET_USER", payload: user });
+
 export const loginUserFetch = (userInfo, history) => {
   return (dispatch) => {
     fetch(API + "/login", {
@@ -14,7 +15,7 @@ export const loginUserFetch = (userInfo, history) => {
       .then((user) => {
         if (!user.error) {
           localStorage.setItem("token", user.jwt);
-          dispatch({ type: "GET_USER", payload: user });
+          dispatch(GET_USER(user));
           history.push("/pins");
         } else {
           alert(user.error);
@@ -36,7 +37,7 @@ export const signupUserFetch = (userInfo, history) => {
       .then((user) => {
         if (!user.error) {
           localStorage.setItem("token", user.jwt);
-          dispatch({ type: "GET_USER", payload: user });
+          dispatch(GET_USER(user));
 
           history.push("/pins");
         } else {
@@ -56,7 +57,7 @@ export const fetchLoggedInUser = (history) => {
       })
         .then((resp) => resp.json())
         .then((user) => {
-          dispatch({ type: "GET_USER", payload: user });
+          dispatch(GET_USER(user));
         });
     } else {
       history.push("/");

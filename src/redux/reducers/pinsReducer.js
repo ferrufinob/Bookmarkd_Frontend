@@ -1,12 +1,13 @@
 const initialState = {
   pins: [],
   selectedPin: null,
+  loading: true,
 };
 
 const pinsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "SET_PINS":
-      return { ...state, pins: action.payload };
+    case "GET_PINS":
+      return { ...state, pins: action.payload, loading: false };
     case "SET_SELECTED_PIN":
       return {
         ...state,
