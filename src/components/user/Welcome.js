@@ -1,16 +1,16 @@
-import React from "react";
-// import Login from "./Login";
+import React, { useEffect } from "react";
 import Navbar from "./NavBar";
 
-const Welcome = () => {
+const Welcome = (props) => {
   // if there is a token show User Navbar
   // else show login / sign up link
-  return (
-    <div>
-      Welcome Page
-      <Navbar />
-    </div>
-  );
+  useEffect(() => {
+    const isAuth = localStorage.getItem("token");
+    if (isAuth) {
+      props.routeProps.history.push("/pins");
+    }
+  }, []);
+  return <div>Welcome Page</div>;
 };
 
 export default Welcome;

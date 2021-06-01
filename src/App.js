@@ -7,11 +7,13 @@ import {
   fetchLoggedInUser,
 } from "./redux/actions/userActions";
 
+import NavBar from "./components/AuthorizedUser/NavBar";
 import PinsContainer from "./containers/PinsContainer";
 import PinDisplay from "./components/pin/PinDisplay";
 import Welcome from "./components/user/Welcome";
 import Signup from "./components/user/Signup";
 import Login from "./components/user/Login";
+import Navbar from "./components/user/NavBar";
 
 class App extends Component {
   // found token actions
@@ -29,6 +31,11 @@ class App extends Component {
     this.props.loginUserFetch(user, this.props.history);
   };
 
+  logoutHandler = () => {
+    localStorage.removeItem("token");
+    this.props.history.push("/");
+  };
+
   renderPinsContainer = () => {
     if (localStorage.getItem("token") && this.props.user.length !== 0) {
       return <PinsContainer user={this.props.user} />;
@@ -39,8 +46,8 @@ class App extends Component {
 
   render() {
     return (
-      // <NavBar user={this.props.user}/>
       <div>
+        <Navbar />
         <Switch>
           <Route
             path="/login"
@@ -50,7 +57,11 @@ class App extends Component {
             path="/signup"
             render={() => <Signup submitHandler={this.signUpHandler} />}
           />
-          <Route exact path="/" component={Welcome} />
+          <Route
+            exact
+            path="/"
+            render={(routeProps) => <Welcome routeProps={routeProps} />}
+          />
           <Route path="/pins/:id" component={PinDisplay} />
           <Route path="/pins" render={this.renderPinsContainer} />
         </Switch>
@@ -59,7 +70,7 @@ class App extends Component {
   }
   // localStorage.removeItem("token")
   // props.history.push("/")
-  // props.user ? pass this call back to NavBar<Logout> onClick={() =>logout handler} : return login/signup
+  // props.user ? pass this call back to na<Logout> onClick={() =>logout handler} : return login/signup
 }
 
 const mapStateToProps = (state) => ({
