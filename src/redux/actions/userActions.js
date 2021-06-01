@@ -37,6 +37,7 @@ export const signupUserFetch = (userInfo, history) => {
         if (!user.error) {
           localStorage.setItem("token", user.jwt);
           dispatch({ type: "GET_USER", payload: user });
+
           history.push("/pins");
         } else {
           alert(user.error);
@@ -45,30 +46,20 @@ export const signupUserFetch = (userInfo, history) => {
   };
 };
 
-export const fetchLoggedInUser = () => {
+export const fetchLoggedInUser = (history) => {
   return (dispatch) => {
     const token = localStorage.getItem("token");
     if (token) {
       return fetch(API + "/autologin", {
         method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          Authorization: `Bearer ${token}`,
-        },
+        headers: { Authorization: `Bearer ${token}` },
       })
-        .then((res) => res.json())
+        .then((resp) => resp.json())
         .then((user) => {
-          if (user.error) {
-            alert(user.error);
-            localStorage.removeItem("token");
-          } else {
-            dispatch({
-              type: "GET_USER",
-              payload: user,
-            });
-          }
+          dispatch({ type: "GET_USER", payload: user });
         });
+    } else {
+      history.push("/");
     }
   };
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import { Component } from "react";
 import { connect } from "react-redux";
-import { Route, Switch, withRouter, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import PinsList from "../components/pin/PinsList";
 import { getPins } from "../redux/actions/pinsActions";
 

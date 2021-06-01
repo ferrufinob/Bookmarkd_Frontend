@@ -1,6 +1,5 @@
 import { Component } from "react";
 import { connect } from "react-redux";
-import { Redirect } from "react-router";
 import { setSelectedPin } from "../../redux/actions/pinsActions";
 class PinDisplay extends Component {
   componentDidMount() {
@@ -13,6 +12,7 @@ class PinDisplay extends Component {
     const { title, description, image, siteUrl } = this.props;
     return (
       <div>
+        <a href={siteUrl}>{title}</a>
         <img src={image} alt={title} />
         <p>{description}</p>
       </div>

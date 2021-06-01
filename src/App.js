@@ -14,6 +14,13 @@ import Signup from "./components/user/Signup";
 import Login from "./components/user/Login";
 
 class App extends Component {
+  // found token actions
+  // if found send to backend to pull user id
+  // if not found push user to login
+  componentDidMount() {
+    this.props.fetchLoggedInUser(this.props.history);
+  }
+
   signUpHandler = (user) => {
     this.props.signupUserFetch(user, this.props.history);
   };
@@ -32,6 +39,7 @@ class App extends Component {
 
   render() {
     return (
+      // <NavBar user={this.props.user}/>
       <div>
         <Switch>
           <Route
@@ -49,6 +57,9 @@ class App extends Component {
       </div>
     );
   }
+  // localStorage.removeItem("token")
+  // props.history.push("/")
+  // props.user ? pass this call back to NavBar<Logout> onClick={() =>logout handler} : return login/signup
 }
 
 const mapStateToProps = (state) => ({
