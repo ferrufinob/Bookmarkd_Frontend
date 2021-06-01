@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import {
   signupUserFetch,
   loginUserFetch,
@@ -15,11 +15,11 @@ import Login from "./components/user/Login";
 
 class App extends Component {
   signUpHandler = (user) => {
-    this.props.signupUserFetch(user);
+    this.props.signupUserFetch(user, this.props.history);
   };
 
   loginHandler = (user) => {
-    this.props.loginUserFetch(user);
+    this.props.loginUserFetch(user, this.props.history);
   };
 
   renderPinsContainer = () => {
@@ -35,12 +35,12 @@ class App extends Component {
       <div>
         <Switch>
           <Route
-            path="/signup"
-            render={() => <Signup submitHandler={this.signUpHandler} />}
-          />
-          <Route
             path="/login"
             render={() => <Login submitHandler={this.loginHandler} />}
+          />
+          <Route
+            path="/signup"
+            render={() => <Signup submitHandler={this.signUpHandler} />}
           />
           <Route exact path="/" component={Welcome} />
           <Route path="/pins/:id" component={PinDisplay} />
@@ -55,8 +55,10 @@ const mapStateToProps = (state) => ({
   user: state.user,
 });
 
-export default connect(mapStateToProps, {
-  signupUserFetch,
-  loginUserFetch,
-  fetchLoggedInUser,
-})(App);
+export default withRouter(
+  connect(mapStateToProps, {
+    signupUserFetch,
+    loginUserFetch,
+    fetchLoggedInUser,
+  })(App)
+);

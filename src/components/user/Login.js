@@ -6,9 +6,10 @@ class Login extends Component {
     password: "",
   };
 
+  componentDidMount() {}
+
   handleOnChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
-    this.props.submitHandler(this.state);
   };
 
   handleOnSubmit = (event) => {
