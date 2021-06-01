@@ -1,14 +1,22 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Route, Switch, withRouter, Redirect } from "react-router-dom";
 import PinsList from "../components/pin/PinsList";
 
 const PinsContainer = (props) => {
+  console.log(props.user);
   return (
-    <div>
-      {props.pins.map((pin) => (
-        <PinsList key={pin.id} {...pin} />
-      ))}
-    </div>
+    <>
+      {props.user ? (
+        <>
+          {props.pins.map((pin) => (
+            <PinsList key={pin.id} {...pin} />
+          ))}
+        </>
+      ) : (
+        <Redirect to="/" />
+      )}
+    </>
   );
 };
 
