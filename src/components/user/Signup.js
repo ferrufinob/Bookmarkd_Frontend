@@ -14,9 +14,7 @@ class Login extends Component {
 
   handleOnSubmit = (event) => {
     event.preventDefault();
-    const { username, email, password } = this.state;
-    const body = { username: username, email: email, password: password };
-    this.props.submitHandler(body);
+    this.props.submitHandler(this.state);
   };
   render() {
     return (
@@ -29,7 +27,12 @@ class Login extends Component {
           onChange={this.handleOnChange}
         />
         <label>Email:</label>
-        <input type="email" name="email" onChange={this.handleOnChange} />
+        <input
+          type="text"
+          name="email"
+          value={this.state.email}
+          onChange={this.handleOnChange}
+        />
         <label>Password:</label>
         <input type="password" name="password" onChange={this.handleOnChange} />
         <button type="submit">Sign up</button>
