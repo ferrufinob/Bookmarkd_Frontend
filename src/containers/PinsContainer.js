@@ -12,17 +12,18 @@ class PinsContainer extends Component {
 
   render() {
     console.log("inside pin container", this.props.user);
-    const { user, pins } = this.props;
+    const { user, pins, loading } = this.props;
+    console.log(this.props);
     return (
       <>
-        {user ? (
+        {user && !loading ? (
           <>
             {pins.map((pin) => (
               <PinsList key={pin.id} {...pin} user={this.props.user} />
             ))}
           </>
         ) : (
-          <Redirect to="/" />
+          <h1>LOADING PINS :</h1>
         )}
       </>
     );
@@ -31,6 +32,7 @@ class PinsContainer extends Component {
 
 const mapStateToProps = (state) => ({
   pins: state.pins.pins,
+  loading: state.loading,
 });
 
 export default connect(mapStateToProps, { getPins })(PinsContainer);

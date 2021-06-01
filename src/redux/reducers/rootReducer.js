@@ -3,7 +3,7 @@ import pinsReducer from "./pinsReducer";
 import userReducer from "./userReducer";
 
 //state.pins.pins
-export const reducer = combineReducers({
+export const rootReducer = combineReducers({
   pins: pinsReducer,
   user: userReducer,
 });

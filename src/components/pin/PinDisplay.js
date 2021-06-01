@@ -8,19 +8,27 @@ class PinDisplay extends Component {
   }
 
   render() {
-    const { title, description, image, siteUrl } = this.props;
+    const { title, description, image, siteUrl, loading } = this.props;
     console.log("pin display", this.props);
+
     return (
-      <div>
-        <a href={siteUrl}>{title}</a>
-        <img src={image} alt={title} />
-        <p>{description}</p>
-      </div>
+      <>
+        {!loading ? (
+          <div>
+            <a href={siteUrl}>{title}</a>
+            <img src={image} alt={title} />
+            <p>{description}</p>
+          </div>
+        ) : (
+          <h1>LOADING:</h1>
+        )}
+      </>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
+  loading: state.loading,
   ...state.pins.selectedPin,
 });
 
