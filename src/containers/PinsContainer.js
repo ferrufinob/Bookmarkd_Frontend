@@ -1,7 +1,6 @@
 import React from "react";
 import { Component } from "react";
 import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
 import PinsList from "../components/pin/PinsList";
 import { getPins } from "../redux/actions/pinsActions";
 
@@ -13,7 +12,6 @@ class PinsContainer extends Component {
   render() {
     console.log("inside pin container", this.props.user);
     const { user, pins, loading } = this.props;
-    console.log(this.props);
     return (
       <>
         {user && !loading ? (
