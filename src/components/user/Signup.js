@@ -1,7 +1,7 @@
 // signup ? "Sign Up : "Login"
 import React, { Component } from "react";
 
-class Login extends Component {
+class Signup extends Component {
   state = {
     username: "",
     email: "",
@@ -34,11 +34,16 @@ class Login extends Component {
           onChange={this.handleOnChange}
         />
         <label>Password:</label>
-        <input type="password" name="password" onChange={this.handleOnChange} />
+        <input
+          type="password"
+          name="password"
+          value={this.state.password}
+          onChange={this.handleOnChange}
+        />
         <button type="submit">Sign up</button>
       </form>
     );
   }
 }
 
-export default Login;
+export default Signup;

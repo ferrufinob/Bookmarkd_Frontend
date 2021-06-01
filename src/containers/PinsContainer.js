@@ -11,11 +11,12 @@ class PinsContainer extends Component {
   }
 
   render() {
+    const { user, pins } = this.props;
     return (
       <>
-        {this.props.user ? (
+        {user ? (
           <>
-            {this.props.pins.map((pin) => (
+            {pins.map((pin) => (
               <PinsList key={pin.id} {...pin} user={this.props.user} />
             ))}
           </>
