@@ -3,12 +3,7 @@
 }
 
 .welcome-div {
-  min-width: 500px;
-  max-width: 800px;
-  position: fixed;
-  top: 60%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  background-position: center center;
   text-align: center;
 }
 

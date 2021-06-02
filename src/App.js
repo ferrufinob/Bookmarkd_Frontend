@@ -47,7 +47,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div>
         <Navbar user={this.props.user} />
         <Switch>
           <Route
@@ -75,7 +75,7 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  user: state.user,
+  user: state.user.currentUser,
 });
 
 export default withRouter(

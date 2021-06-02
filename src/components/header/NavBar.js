@@ -1,13 +1,11 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { NavLink } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import IconButton from "@material-ui/core/IconButton";
 import FaceIcon from "@material-ui/icons/Face";
 import AddIcon from "@material-ui/icons/Add";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-
-import NavBar from "../user/NavBar";
 
 const Navbar = (props) => {
   console.log("in navbar", props.user);
@@ -43,7 +41,14 @@ const Navbar = (props) => {
         </Wrapper>
       ) : (
         <>
-          <NavBar />
+          <Wrapper>
+            <LoginButton>
+              <NavLink to="/login">Log in</NavLink>
+            </LoginButton>
+            <SignupButton>
+              <NavLink to="/signup">Signup</NavLink>
+            </SignupButton>
+          </Wrapper>
         </>
       )}
     </>
@@ -52,9 +57,11 @@ const Navbar = (props) => {
 
 const Wrapper = styled.div`
   display: flex;
+  overflow: auto;
   align-items: center;
   height: 56px;
   padding: 12px 4px 4px 16px;
+  background-color: white;
   color: black;
 `;
 
@@ -63,25 +70,19 @@ const Logo = styled.div`
   font-size: 30px;
 `;
 
-const Home = styled.div`
+const Buttons = css`
   display: flex;
   height: 48px;
-  min-width: 120px;
+  min-width: 100px;
   align-items: center;
   justify-content: center;
   border-radius: 25px;
   cursor: pinter;
-  background-color: #b4dfe5;
-  margin-right: 15px;
-  margin-left: 15px;
-
+  margin-right: 20px;
   a {
     font-weight: 600;
     text-decoration: none;
     color: #303c6c;
-  }
-  :hover {
-    background-color: #fbe8a6;
   }
 `;
 
@@ -95,4 +96,28 @@ const NavIcons = styled.div`
   display: flex;
 `;
 
+const Home = styled.div`
+ ${Buttons}
+  background-color: #b4dfe5;
+  margin-left: 15px;
+  a {
+  :hover {
+    background-color: #fbe8a6;
+  }
+`;
+
+const LoginButton = styled.div`
+  ${Buttons}
+  background-color: #f4976c;
+  :hover {
+    background-color: #e98074;
+  }
+`;
+const SignupButton = styled.div`
+  ${Buttons}
+  background-color: #efefef;
+  :hover {
+    background-color: #8e8d8a;
+  }
+`;
 export default Navbar;
