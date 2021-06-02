@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./index.css";
 import { connect } from "react-redux";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import {
@@ -12,7 +13,7 @@ import PinDisplay from "./components/pin/PinDisplay";
 import Welcome from "./components/user/Welcome";
 import Signup from "./components/user/Signup";
 import Login from "./components/user/Login";
-import Navbar from "./components/user/NavBar";
+import Navbar from "./components/header/NavBar";
 
 class App extends Component {
   // found token actions
