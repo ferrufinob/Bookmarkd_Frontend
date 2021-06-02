@@ -43,9 +43,6 @@ const Navbar = (props) => {
         </Wrapper>
       ) : (
         <>
-          <Wrapper>
-            <Logo>Bookmarkd</Logo>
-          </Wrapper>
           <NavBar />
         </>
       )}

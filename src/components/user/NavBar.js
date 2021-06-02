@@ -16,8 +16,17 @@ const NavBar = () => {
 
 const Wrapper = styled.div`
   display: flex;
-  float: right;
-  text-align: center;
+  align-items: center;
+  padding: 12px 4px 4px 16px;
+  color: black;
+  background-color: white;
+  width: 100%;
+  min-width: 660px;
+  margin-top: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 200;
 `;
 
 const Buttons = css`

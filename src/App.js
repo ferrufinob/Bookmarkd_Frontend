@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./index.css";
+import "./App.css";
 import { connect } from "react-redux";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import {
@@ -47,7 +47,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="App">
         <Navbar user={this.props.user} />
         <Switch>
           <Route
