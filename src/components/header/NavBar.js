@@ -31,10 +31,8 @@ const Navbar = (props) => {
                   <AddIcon />
                 </NavLink>
               </IconButton>
-              <IconButton>
-                <NavLink to="/">
-                  <ExitToAppIcon />
-                </NavLink>
+              <IconButton onClick={props.logoutHandler}>
+                <ExitToAppIcon />
               </IconButton>
             </NavIcons>
           </NavUnlisted>
@@ -42,6 +40,7 @@ const Navbar = (props) => {
       ) : (
         <>
           <Wrapper>
+            <Logo>Bookmarkd</Logo>
             <LoginButton>
               <NavLink to="/login">Log in</NavLink>
             </LoginButton>
@@ -70,6 +69,16 @@ const Logo = styled.div`
   font-size: 30px;
 `;
 
+const NavUnlisted = styled.ul`
+  a {
+    color: #303c6c;
+  }
+`;
+
+const NavIcons = styled.div`
+  display: flex;
+`;
+
 const Buttons = css`
   display: flex;
   height: 48px;
@@ -86,16 +95,6 @@ const Buttons = css`
   }
 `;
 
-const NavUnlisted = styled.ul`
-  a {
-    color: #303c6c;
-  }
-`;
-
-const NavIcons = styled.div`
-  display: flex;
-`;
-
 const Home = styled.div`
  ${Buttons}
   background-color: #b4dfe5;
@@ -108,6 +107,7 @@ const Home = styled.div`
 
 const LoginButton = styled.div`
   ${Buttons}
+  margin-left: auto;
   background-color: #f4976c;
   :hover {
     background-color: #e98074;

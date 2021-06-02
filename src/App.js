@@ -48,7 +48,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Navbar user={this.props.user} />
+        <Navbar user={this.props.user} logoutHandler={this.logoutHandler} />
         <Switch>
           <Route
             path="/login"
