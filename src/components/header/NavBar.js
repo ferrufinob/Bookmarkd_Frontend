@@ -7,51 +7,49 @@ import FaceIcon from "@material-ui/icons/Face";
 import AddIcon from "@material-ui/icons/Add";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
+import NavBar from "../user/NavBar";
+
 const Navbar = (props) => {
   console.log("in navbar", props.user);
   const { user } = props;
   return (
-    <Wrapper>
-      <Logo>Bookmarkd</Logo>
-      <Home>
-        <NavLink to="/pins">Home</NavLink>
-      </Home>
-      <SearchBar />
-      <NavUnlisted>
-        <NavIcons>
-          <IconButton>
-            <NavLink to="/boards">
-              <FaceIcon />
-            </NavLink>
-          </IconButton>
-          <IconButton>
-            <NavLink to="/">
-              <AddIcon />
-            </NavLink>
-          </IconButton>
-          <IconButton>
-            <NavLink to="/">
-              <ExitToAppIcon />
-            </NavLink>
-          </IconButton>
-        </NavIcons>
-      </NavUnlisted>
-    </Wrapper>
-    // <Wrapper>
-    //   {user && localStorage.getItem("token") ? (
-    //     <div>
-    //       <LoggedIn user={user} />
-    //     </div>
-    //   ) : (
-    //     <div>
-    //       <NavLink to="/login">
-    //         <p>Log in</p>
-    //       </NavLink>
-    //       <NavLink to="/signup">
-    //         <p>Sign up</p>
-    //       </NavLink>
-    //     </div>
-    //   )}
+    <>
+      {user && localStorage.getItem("token") ? (
+        <Wrapper>
+          <Logo>Bookmarkd</Logo>
+          <Home>
+            <NavLink to="/pins">Home</NavLink>
+          </Home>
+          <SearchBar />
+          <NavUnlisted>
+            <NavIcons>
+              <IconButton>
+                <NavLink to="/boards">
+                  <FaceIcon />
+                </NavLink>
+              </IconButton>
+              <IconButton>
+                <NavLink to="/">
+                  <AddIcon />
+                </NavLink>
+              </IconButton>
+              <IconButton>
+                <NavLink to="/">
+                  <ExitToAppIcon />
+                </NavLink>
+              </IconButton>
+            </NavIcons>
+          </NavUnlisted>
+        </Wrapper>
+      ) : (
+        <>
+          <Wrapper>
+            <Logo>Bookmarkd</Logo>
+          </Wrapper>
+          <NavBar />
+        </>
+      )}
+    </>
   );
 };
 

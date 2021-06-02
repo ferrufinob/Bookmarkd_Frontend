@@ -1,3 +1,16 @@
 * {
   margin: 0;
 }
+
+.welcome-div {
+  position: fixed;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.welcome-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
