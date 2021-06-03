@@ -47,7 +47,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="App">
         <Navbar user={this.props.user} logoutHandler={this.logoutHandler} />
         <Switch>
           <Route
@@ -69,13 +69,10 @@ class App extends Component {
       </div>
     );
   }
-  // localStorage.removeItem("token")
-  // props.history.push("/")
-  // props.user ? pass this call back to na<Logout> onClick={() =>logout handler} : return login/signup
 }
 
 const mapStateToProps = (state) => ({
-  user: state.user.currentUser,
+  user: state.user,
 });
 
 export default withRouter(

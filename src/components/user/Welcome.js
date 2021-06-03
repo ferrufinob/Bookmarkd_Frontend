@@ -15,18 +15,20 @@ const Welcome = () => {
 };
 
 const WelcomeWrapper = styled.div`
-  background-position: center center;
-  text-align: center;
+  dispay: inline-block;
+  margin: 0 auto;
+  width: 700px;
+  height: 700px;
+  position: relative;
   h2 {
     color: rgb(97, 140, 123);
     font-weight: 700;
+    text-align: center;
   }
   img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
     max-width: 100%;
-    height: auto;
+    height: 100%;
+    position: absolute;
   }
 `;
 

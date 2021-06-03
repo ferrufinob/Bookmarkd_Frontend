@@ -8,14 +8,14 @@ class PinDisplay extends Component {
   }
 
   render() {
-    const { title, description, image, siteUrl, loading } = this.props;
+    const { title, description, image, site_url, loading } = this.props;
     console.log("pin display", this.props);
 
     return (
       <>
         {!loading ? (
           <div>
-            <a href={siteUrl}>{title}</a>
+            <a href={site_url}>{title}</a>
             <img src={image} alt={title} />
             <p>{description}</p>
           </div>

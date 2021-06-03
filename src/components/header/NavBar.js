@@ -67,7 +67,6 @@ const Navbar = (props) => {
 
 const Wrapper = styled.div`
   display: flex;
-  overflow: auto;
   align-items: center;
   height: 56px;
   padding: 12px 4px 4px 16px;
@@ -93,12 +92,13 @@ const NavIcons = styled.div`
 const Buttons = css`
   display: flex;
   height: 48px;
-  min-width: 100px;
+  min-width: 120px;
   align-items: center;
   justify-content: center;
   border-radius: 25px;
   cursor: pinter;
-  margin-right: 20px;
+  margin-right: 5px;
+  margin-left: 5px;
   a {
     font-weight: 600;
     text-decoration: none;
@@ -109,7 +109,6 @@ const Buttons = css`
 const Home = styled.div`
  ${Buttons}
   background-color: #b4dfe5;
-  margin-left: 15px;
   a {
   :hover {
     background-color: #fbe8a6;
@@ -118,7 +117,6 @@ const Home = styled.div`
 
 const LoginButton = styled.div`
   ${Buttons}
-  margin-left: auto;
   background-color: #f4976c;
   :hover {
     background-color: #e98074;
