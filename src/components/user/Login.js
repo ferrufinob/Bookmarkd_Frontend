@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Header, Button, Span, FormWrapper } from "./Form-Styling";
+import { Header, Button, FormWrapper } from "./Form-Styling";
 
 class Login extends Component {
   state = {

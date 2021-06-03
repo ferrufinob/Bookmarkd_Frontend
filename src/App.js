@@ -9,11 +9,13 @@ import {
 } from "./redux/actions/userActions";
 
 import PinsContainer from "./containers/PinsContainer";
+import BoardsContainer from "./containers/BoardsContainer";
 import PinDisplay from "./components/pin/PinDisplay";
 import Welcome from "./components/user/Welcome";
 import Signup from "./components/user/Signup";
 import Login from "./components/user/Login";
 import Navbar from "./components/header/NavBar";
+import NewPin from "./components/pin/NewPin";
 
 class App extends Component {
   componentDidMount() {
@@ -60,8 +62,10 @@ class App extends Component {
             path="/"
             render={(routeProps) => <Welcome routeProps={routeProps} />}
           />
+          <Route path="/pins/new" component={NewPin} />
           <Route path="/pins/:id" component={PinDisplay} />
           <Route path="/pins" render={this.renderPinsContainer} />
+          <Route path="/boards" component={BoardsContainer} />
         </Switch>
       </div>
     );

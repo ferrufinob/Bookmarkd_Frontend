@@ -33,7 +33,7 @@ const Navbar = (props) => {
                 </NavLink>
               </IconButton>
               <IconButton>
-                <NavLink to="/">
+                <NavLink to="/pins/new">
                   <AddIcon />
                 </NavLink>
               </IconButton>
@@ -101,7 +101,8 @@ const Buttons = css`
   margin-left: 5px;
   border: none;
   a {
-    font-weight: 600;
+    font-weight: 700;
+    font-size: 18px;
     text-decoration: none;
     color: #303c6c;
   }
