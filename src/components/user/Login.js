@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { Header, Button, Span, FormWrapper } from "./Form-Styling";
 
 class Login extends Component {
   state = {
@@ -19,23 +21,30 @@ class Login extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleOnSubmit}>
-        <label>Username:</label>
-        <input
-          type="text"
-          name="email"
-          value={this.state.email}
-          onChange={this.handleOnChange}
-        />
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={this.state.password}
-          onChange={this.handleOnChange}
-        />
-        <button type="submit">Log in</button>
-      </form>
+      <>
+        <FormWrapper>
+          <Header>Welcome to Bookmarkd</Header>
+          <form onSubmit={this.handleOnSubmit}>
+            <input
+              type="text"
+              name="email"
+              value={this.state.email}
+              placeholder="Email"
+              onChange={this.handleOnChange}
+            />
+            <input
+              type="password"
+              name="password"
+              value={this.state.password}
+              placeholder="Password"
+              onChange={this.handleOnChange}
+            />
+            <Button type="submit">Log in</Button>
+          </form>
+          <br></br>
+          Not on Bookmarkd yet? <Link to="/signup">Sign up</Link>
+        </FormWrapper>
+      </>
     );
   }
 }

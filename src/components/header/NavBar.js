@@ -52,7 +52,7 @@ const Navbar = (props) => {
                 Bookmarkd
               </Logo>
             </IconButton>
-            <LoginButton>
+            <LoginButton onClick={props.toggleModal}>
               <NavLink to="/login">Log in</NavLink>
             </LoginButton>
             <SignupButton>
@@ -99,6 +99,7 @@ const Buttons = css`
   cursor: pinter;
   margin-right: 5px;
   margin-left: 5px;
+  border: none;
   a {
     font-weight: 600;
     text-decoration: none;
@@ -106,7 +107,7 @@ const Buttons = css`
   }
 `;
 
-const Home = styled.div`
+const Home = styled.button`
  ${Buttons}
   background-color: #b4dfe5;
   a {
@@ -115,14 +116,14 @@ const Home = styled.div`
   }
 `;
 
-const LoginButton = styled.div`
+const LoginButton = styled.button`
   ${Buttons}
   background-color: #f4976c;
   :hover {
     background-color: #e98074;
   }
 `;
-const SignupButton = styled.div`
+const SignupButton = styled.button`
   ${Buttons}
   background-color: #efefef;
   :hover {

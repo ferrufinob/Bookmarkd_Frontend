@@ -16,9 +16,6 @@ import Login from "./components/user/Login";
 import Navbar from "./components/header/NavBar";
 
 class App extends Component {
-  // found token actions
-  // if found send to backend to pull user id
-  // if not found push user to login
   componentDidMount() {
     this.props.fetchLoggedInUser(this.props.history);
     console.log("mounting user");
