@@ -8,6 +8,7 @@ export const loginUserFetch = (userInfo, history) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Accept: "application/json",
       },
       body: JSON.stringify(userInfo),
     })
@@ -30,6 +31,7 @@ export const signupUserFetch = (userInfo, history) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Accept: "application/json",
       },
       body: JSON.stringify(userInfo),
     })
