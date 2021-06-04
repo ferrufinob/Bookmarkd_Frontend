@@ -1,14 +1,27 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchBoards } from "../redux/actions/boardsActions";
+import BoardsList from "../components/board/BoardsList";
+import { getBoards } from "../redux/actions/boardsActions";
 
 class BoardsContainer extends Component {
   componentDidMount() {
-    this.props.fetchBoards();
+    this.props.getBoards();
   }
+
   render() {
-    return <div>Testing</div>;
+    const { boards } = this.props;
+    return (
+      <div>
+        {boards.map((board) => (
+          <BoardsList key={board.id} {...board} />
+        ))}
+      </div>
+    );
   }
 }
 
-export default connect(null, { fetchBoards })(BoardsContainer);
+const mapStateToProps = (state) => ({
+  boards: state.boards.boards,
+});
+
+export default connect(mapStateToProps, { getBoards })(BoardsContainer);

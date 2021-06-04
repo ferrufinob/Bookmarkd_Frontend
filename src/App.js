@@ -36,6 +36,12 @@ class App extends Component {
     this.props.history.push("/");
   };
 
+  // !! Fix this ⬇ Find a better structure, too much logic in this component
+  // * Ideas:
+  //  Profile component? Profile -> Navbar => BoardsComponent -> BoardsList -> BoardDisplay(which will be PinsList technically)
+  // HomeContainer => Navbar => PinsContainer -> PinsList -> PinDisplay
+  // WelcomeContainer => WelcomeComponent => Navbar
+
   renderPinsContainer = () => {
     if (localStorage.getItem("token") && this.props.user.length !== 0) {
       return <PinsContainer user={this.props.user} />;
@@ -65,7 +71,10 @@ class App extends Component {
           <Route path="/pins/new" component={NewPin} />
           <Route path="/pins/:id" component={PinDisplay} />
           <Route path="/pins" render={this.renderPinsContainer} />
-          <Route path="/boards" component={BoardsContainer} />
+          <Route
+            path="/boards"
+            render={() => <BoardsContainer pins={this.props.pins} />}
+          />
         </Switch>
       </div>
     );

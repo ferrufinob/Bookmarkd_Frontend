@@ -1,5 +1,6 @@
 const initialState = {
   boards: [],
+  curentBoard: [],
   loading: true,
 };
 

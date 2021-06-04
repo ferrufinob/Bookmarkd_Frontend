@@ -1,8 +1,8 @@
 const API = "http://localhost:3000/api/v1";
 
-export const GET_BOARDS = (boards) => ({ type: "GET_BOARDS" });
+export const GET_BOARDS = (boards) => ({ type: "GET_BOARDS", payload: boards });
 
-export const fetchBoards = () => {
+export const getBoards = () => {
   const token = localStorage.getItem("token");
   return (dispatch) => {
     if (token) {
