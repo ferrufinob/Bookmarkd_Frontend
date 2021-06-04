@@ -8,7 +8,6 @@ export const loginUserFetch = (userInfo, history) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
       },
       body: JSON.stringify(userInfo),
     })
@@ -16,7 +15,7 @@ export const loginUserFetch = (userInfo, history) => {
       .then((user) => {
         if (!user.error) {
           localStorage.setItem("token", user.jwt);
-          dispatch(GET_USER(user));
+          dispatch(GET_USER(user.user));
           history.push("/pins");
         } else {
           alert(user.error);
@@ -31,7 +30,6 @@ export const signupUserFetch = (userInfo, history) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
       },
       body: JSON.stringify(userInfo),
     })
@@ -39,7 +37,7 @@ export const signupUserFetch = (userInfo, history) => {
       .then((user) => {
         if (!user.error) {
           localStorage.setItem("token", user.jwt);
-          dispatch(GET_USER(user));
+          dispatch(GET_USER(user.user));
 
           history.push("/pins");
         } else {
@@ -52,17 +50,17 @@ export const signupUserFetch = (userInfo, history) => {
 export const fetchLoggedInUser = (history) => {
   return (dispatch) => {
     const token = localStorage.getItem("token");
-    if (token) {
-      return fetch(API + "/autologin", {
-        method: "GET",
-        headers: { Authorization: `Bearer ${token}` },
-      })
-        .then((resp) => resp.json())
-        .then((user) => {
-          dispatch(GET_USER(user));
-        });
-    } else {
-      history.push("/");
-    }
+    // if (token) {
+    return fetch(API + "/autologin", {
+      method: "POST",
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then((resp) => resp.json())
+      .then((user) => {
+        dispatch(GET_USER(user.user));
+      });
+    // } else {
+    //   history.push("/");
+    // }
   };
 };
