@@ -10,14 +10,14 @@ class PinsContainer extends Component {
   }
 
   render() {
-    console.log("inside pin container", this.props.user);
+    console.log("inside pin container");
     const { pins, loading } = this.props;
     return (
       <>
         {!loading ? (
           <>
             {pins.map((pin) => (
-              <PinsList key={pin.id} {...pin} user={this.props.user} />
+              <PinsList key={pin.id} {...pin} />
             ))}
           </>
         ) : (

@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import "./App.css";
 import { connect } from "react-redux";
-import { Switch, Route, Redirect, withRouter } from "react-router-dom";
+import { Switch, Route, withRouter } from "react-router-dom";
 import {
   signupUserFetch,
   loginUserFetch,
   fetchLoggedInUser,
 } from "./redux/actions/userActions";
+import { getBoards } from "./redux/actions/boardsActions";
 
 import PinsContainer from "./containers/PinsContainer";
 import BoardsContainer from "./containers/BoardsContainer";
@@ -20,6 +21,7 @@ import NewPin from "./components/pin/NewPin";
 class App extends Component {
   componentDidMount() {
     this.props.fetchLoggedInUser(this.props.history);
+    this.props.getBoards();
   }
 
   signUpHandler = (user) => {
@@ -35,18 +37,8 @@ class App extends Component {
     this.props.history.push("/");
   };
 
-  // !! Fix this ⬇ Find a better structure, too much logic in this component
-  // * Ideas:
-
-  // renderPinsContainer = () => {
-  //   if (localStorage.getItem("token") && this.props.user.length !== 0) {
-  //     return <PinsContainer user={this.props.user} />;
-  //   } else {
-  //     return <Redirect to="/" />;
-  //   }
-  // };
-
   render() {
+    console.log("boards mounted in App");
     return (
       <div className="App">
         <Navbar user={this.props.user} logoutHandler={this.logoutHandler} />
@@ -64,10 +56,16 @@ class App extends Component {
             path="/"
             render={(routeProps) => <Welcome routeProps={routeProps} />}
           />
-          <Route path="/pins/new" component={NewPin} />
+          <Route
+            path="/pins/new"
+            render={() => <NewPin boards={this.props.boards} />}
+          />
           <Route path="/pins/:id" component={PinDisplay} />
           <Route path="/pins" component={PinsContainer} />
-          <Route path="/boards" component={BoardsContainer} />
+          <Route
+            path="/boards"
+            render={() => <BoardsContainer boards={this.props.boards} />}
+          />
         </Switch>
       </div>
     );
@@ -76,6 +74,7 @@ class App extends Component {
 
 const mapStateToProps = (state) => ({
   user: state.user,
+  boards: state.boards.boards,
 });
 
 export default withRouter(
@@ -83,5 +82,6 @@ export default withRouter(
     signupUserFetch,
     loginUserFetch,
     fetchLoggedInUser,
+    getBoards,
   })(App)
 );

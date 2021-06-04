@@ -1,15 +1,10 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import BoardsList from "../components/board/BoardsList";
-import { getBoards } from "../redux/actions/boardsActions";
 
 class BoardsContainer extends Component {
-  componentDidMount() {
-    this.props.getBoards();
-  }
-
   render() {
     const { boards } = this.props;
+    console.log("board mounted in boards container");
     return (
       <div>
         {boards.map((board) => (
@@ -20,8 +15,4 @@ class BoardsContainer extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  boards: state.boards.boards,
-});
-
-export default connect(mapStateToProps, { getBoards })(BoardsContainer);
+export default BoardsContainer;
