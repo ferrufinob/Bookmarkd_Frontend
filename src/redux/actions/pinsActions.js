@@ -5,6 +5,7 @@ export const SET_SELECTED_PIN = (id) => ({
   type: "SET_SELECTED_PIN",
   payload: id,
 });
+export const ADD_PIN = (pin) => ({ type: "ADD_PIN", payload: pin });
 
 // thunk gives us the ability to return Functions with a default argument of dispatch
 export const getPins = () => {
@@ -23,5 +24,25 @@ export const setSelectedPin = (id) => {
     fetch(API + "/pins/" + id)
       .then((res) => res.json())
       .then((pin) => dispatch(SET_SELECTED_PIN(pin)));
+  };
+};
+
+export const addPin = (pinData) => {
+  const token = localStorage.getItem("token");
+  return (dispatch) => {
+    // !add LOADING here
+    fetch(API + "/pins", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(pinData),
+    })
+      .then((res) => res.json())
+      .then((pin) => {
+        dispatch(ADD_PIN(pin));
+      });
   };
 };

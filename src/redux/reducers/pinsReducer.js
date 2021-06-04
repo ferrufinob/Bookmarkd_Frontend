@@ -14,6 +14,10 @@ const pinsReducer = (state = initialState, action) => {
         selectedPin: action.payload.pin,
         loading: false,
       };
+
+    case "ADD_PIN":
+      return { ...state, pins: [...state.pins, action.payload.pin] };
+
     case "LOADING_PIN":
       return { ...state, selectedPin: { ...state.selectedPin }, loading: true };
 

@@ -27,7 +27,7 @@ export const loginUserFetch = (userInfo, history) => {
 export const signupUserFetch = (userInfo, history) => {
   return (dispatch) => {
     fetch(API + "/users", {
-      method: "GET",
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
