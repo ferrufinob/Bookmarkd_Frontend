@@ -27,7 +27,7 @@ export const loginUserFetch = (userInfo, history) => {
 export const signupUserFetch = (userInfo, history) => {
   return (dispatch) => {
     fetch(API + "/users", {
-      method: "POST",
+      method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
@@ -50,17 +50,17 @@ export const signupUserFetch = (userInfo, history) => {
 export const fetchLoggedInUser = (history) => {
   return (dispatch) => {
     const token = localStorage.getItem("token");
-    // if (token) {
-    return fetch(API + "/autologin", {
-      method: "POST",
-      headers: { Authorization: `Bearer ${token}` },
-    })
-      .then((resp) => resp.json())
-      .then((user) => {
-        dispatch(GET_USER(user.user));
-      });
-    // } else {
-    //   history.push("/");
-    // }
+    if (token) {
+      return fetch(API + "/autologin", {
+        method: "GET",
+        headers: { Authorization: `Bearer ${token}` },
+      })
+        .then((resp) => resp.json())
+        .then((user) => {
+          dispatch(GET_USER(user.user));
+        });
+    } else {
+      history.push("/");
+    }
   };
 };

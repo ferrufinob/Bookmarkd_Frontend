@@ -11,10 +11,10 @@ class PinsContainer extends Component {
 
   render() {
     console.log("inside pin container", this.props.user);
-    const { user, pins, loading } = this.props;
+    const { pins, loading } = this.props;
     return (
       <>
-        {user && !loading ? (
+        {!loading ? (
           <>
             {pins.map((pin) => (
               <PinsList key={pin.id} {...pin} user={this.props.user} />
