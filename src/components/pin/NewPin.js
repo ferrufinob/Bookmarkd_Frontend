@@ -7,7 +7,7 @@ class NewPin extends Component {
     description: "",
     image: " ",
     site_url: "",
-    board_id: "",
+    board: "",
   };
 
   handleOnChange = (event) => {
@@ -20,11 +20,10 @@ class NewPin extends Component {
   };
   render() {
     const boards = this.props.boards.map((board) => (
-      <option key={board.id} value={board.id}>
+      <option key={board.id} value={board}>
         {board.name}
       </option>
     ));
-    console.log(this.state.board_id);
     return (
       <div>
         <form onSubmit={this.handleOnSubmit}>
@@ -56,8 +55,15 @@ class NewPin extends Component {
             value={this.state.image}
             onChange={this.handleOnChange}
           />
+          <label>Create a board:</label>
+          <input
+            type="text"
+            name="board"
+            value={this.board}
+            onChange={this.handleOnChange}
+          />
           <select
-            name="board_id"
+            name="board"
             value={this.state.board}
             onChange={this.handleOnChange}
           >

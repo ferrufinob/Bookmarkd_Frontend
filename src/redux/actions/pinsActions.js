@@ -31,7 +31,7 @@ export const addPin = (pinData) => {
   const token = localStorage.getItem("token");
   return (dispatch) => {
     // !add LOADING here
-    fetch(API + "/pins", {
+    let configObj = {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -39,9 +39,11 @@ export const addPin = (pinData) => {
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(pinData),
-    })
+    };
+    fetch(API + "/pins", configObj)
       .then((res) => res.json())
       .then((pin) => {
+        console.log(pin);
         dispatch(ADD_PIN(pin));
       });
   };
