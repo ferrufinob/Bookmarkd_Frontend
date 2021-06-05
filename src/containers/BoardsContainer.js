@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getBoards } from "../redux/actions/boardsActions";
+import { getPins } from "../redux/actions/pinsActions";
 import BoardsList from "../components/board/BoardsList";
 
 class BoardsContainer extends Component {
@@ -13,12 +14,17 @@ class BoardsContainer extends Component {
     return (
       <div>
         {boards.map((board) => (
-          <BoardsList key={board.id} {...board} />
+          <BoardsList key={board.id} {...board} pins={this.props.pins} />
         ))}
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => ({ boards: state.boards.boards });
-export default connect(mapStateToProps, { getBoards })(BoardsContainer);
+const mapStateToProps = (state) => ({
+  boards: state.boards.boards,
+  pins: state.pins.pins,
+});
+export default connect(mapStateToProps, { getBoards, getPins })(
+  BoardsContainer
+);

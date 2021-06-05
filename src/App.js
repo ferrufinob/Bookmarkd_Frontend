@@ -11,6 +11,7 @@ import { getBoards } from "./redux/actions/boardsActions";
 
 import PinsContainer from "./containers/PinsContainer";
 import BoardsContainer from "./containers/BoardsContainer";
+import BoardDisplay from "./components/board/BoardDisplay";
 import PinDisplay from "./components/pin/PinDisplay";
 import Welcome from "./components/user/Welcome";
 import Signup from "./components/user/Signup";
@@ -63,6 +64,7 @@ class App extends Component {
           <Route path="/pins/:id" component={PinDisplay} />
           <Route path="/pins" component={PinsContainer} />
           <Route path="/boards" render={() => <BoardsContainer />} />
+          <Route path="/boards/:id/pins" component={BoardDisplay} />
         </Switch>
       </div>
     );

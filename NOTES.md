@@ -1,5 +1,10 @@
 # TODO
 
+- Getting Board Pins options
+
+1. "/board" -> clicked -> "/boards/pins"(Route React) -> backend -> Pin index = if params[:board_id] : board.pins
+2. conditional rendering -> pins.filter(pin => pin.board_id === props.id <PinList pin={pin} key={prop.id}>)(prevents making a different fetch request just to get information I already have)
+
 ## Priority
 
 - User can click on board to view all pins belonging to that board

@@ -106,9 +106,9 @@ const FormWrapper = styled.div`
   border-radius: 5px;
   height: 650px;
   width: 880px;
-  margin: 0px;
+  // margin: 0 auto;
   padding: 40px 40px 0px;
-  top: 50%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
   box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
