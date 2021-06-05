@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Header, Button, FormWrapper } from "./Form-Styling";
+import IconButton from "@material-ui/core/IconButton";
+import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
 
 class Login extends Component {
   state = {
@@ -23,6 +25,9 @@ class Login extends Component {
     return (
       <>
         <FormWrapper>
+          <IconButton>
+            <BookmarkBorderIcon />
+          </IconButton>
           <Header>Welcome to Bookmarkd</Header>
           <form onSubmit={this.handleOnSubmit}>
             <input

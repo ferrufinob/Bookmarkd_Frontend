@@ -3,6 +3,7 @@ import { Component } from "react";
 import { connect } from "react-redux";
 import PinsList from "../components/pin/PinsList";
 import { getPins } from "../redux/actions/pinsActions";
+import styled from "styled-components";
 
 class PinsContainer extends Component {
   componentDidMount() {
@@ -13,7 +14,7 @@ class PinsContainer extends Component {
     console.log("inside pin container");
     const { pins, loading } = this.props;
     return (
-      <>
+      <Column>
         {!loading ? (
           <>
             {pins.map((pin) => (
@@ -23,7 +24,7 @@ class PinsContainer extends Component {
         ) : (
           <h1>LOADING PINS :</h1>
         )}
-      </>
+      </Column>
     );
   }
 }
@@ -33,4 +34,17 @@ const mapStateToProps = (state) => ({
   loading: state.loading,
 });
 
+const Column = styled.div`
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  img {
+    border-radius: 20px;
+    height: auto;
+    width: 400px;
+  }
+  img:hover {
+    filter: brightness(50%);
+  }
+`;
 export default connect(mapStateToProps, { getPins })(PinsContainer);
