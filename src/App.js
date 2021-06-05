@@ -62,10 +62,7 @@ class App extends Component {
           />
           <Route path="/pins/:id" component={PinDisplay} />
           <Route path="/pins" component={PinsContainer} />
-          <Route
-            path="/boards"
-            render={() => <BoardsContainer boards={this.props.boards} />}
-          />
+          <Route path="/boards" render={() => <BoardsContainer />} />
         </Switch>
       </div>
     );

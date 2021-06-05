@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addPin } from "../../redux/actions/pinsActions";
+
 class NewPin extends Component {
   state = {
     title: "",
@@ -20,10 +21,11 @@ class NewPin extends Component {
   };
   render() {
     const boards = this.props.boards.map((board) => (
-      <option key={board.id} value={board}>
+      <option key={board.id} value={board.name}>
         {board.name}
       </option>
     ));
+    console.log(this.state.board);
     return (
       <div>
         <form onSubmit={this.handleOnSubmit}>
@@ -59,7 +61,7 @@ class NewPin extends Component {
           <input
             type="text"
             name="board"
-            value={this.board}
+            value={this.state.board}
             onChange={this.handleOnChange}
           />
           <select
@@ -69,7 +71,6 @@ class NewPin extends Component {
           >
             {boards}
           </select>
-          {/* create a modal for user to create a board and then redirect them to pin form again */}
           <button type="submit">Save</button>
         </form>
       </div>
