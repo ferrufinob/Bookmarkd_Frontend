@@ -13,6 +13,7 @@
 
 ## Not urgent
 
+- Look into cloudinary for images
 - Find a way for the board cover to be the image of the last pin added.
 - Make sure that logged in user can't acess login/ sign in or welcome paths.
 - Add like feature

@@ -35,9 +35,12 @@ const mapStateToProps = (state) => ({
 });
 
 const Column = styled.div`
+  margin: 50px auto;
+  justify-content: center;
   text-align: center;
   display: flex;
   flex-wrap: wrap;
+  column-gap: 15px;
   img {
     border-radius: 20px;
     height: auto;
