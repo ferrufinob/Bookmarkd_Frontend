@@ -31,6 +31,7 @@ export const addPin = (pinData) => {
   const token = localStorage.getItem("token");
   return (dispatch) => {
     // !add LOADING here
+    // ! If NULL do not persist
     let configObj = {
       method: "POST",
       headers: {
