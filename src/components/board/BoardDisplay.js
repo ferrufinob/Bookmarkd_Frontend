@@ -1,16 +1,29 @@
 import React from "react";
 import { Component } from "react";
+import { connect } from "react-redux";
+import { getPins } from "../../redux/actions/pinsActions";
+import PinsList from "../pin/PinsList";
 
 class BoardDisplay extends Component {
   componentDidMount() {
-    console.log("mounted Board display");
-    // const id = this.props.match.params.id;
-    // this.props.setSelectedPin(id);
+    this.props.getPins();
   }
 
+  renderBoardPins = () => {
+    const boardId = this.props.match.params.id;
+    return this.props.pins
+      .filter((pin) => {
+        return parseInt(pin.board_id) === parseInt(boardId);
+      })
+      .map((pin) => {
+        return <PinsList key={pin.id} {...pin} />;
+      });
+  };
   render() {
-    return <div>Hi</div>;
+    return <>{this.renderBoardPins()}</>;
   }
 }
 
-export default BoardDisplay;
+const mapStateToProps = (state) => ({ pins: state.pins.pins });
+
+export default connect(mapStateToProps, { getPins })(BoardDisplay);
