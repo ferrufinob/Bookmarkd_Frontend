@@ -30,14 +30,15 @@ const mapStateToProps = (state) => ({
 });
 
 const BoardWrapper = styled.div`
+  border: 1px red solid;
   margin: 50px auto;
   justify-content: center;
   text-align: center;
   display: flex;
   flex-wrap: wrap;
-  column-gap: 15px;
-  img {
-    width: 20%;
+  cursor: pointer;
+  a {
+    text-decoration: none;
   }
 `;
 export default connect(mapStateToProps, { getBoards, getPins })(

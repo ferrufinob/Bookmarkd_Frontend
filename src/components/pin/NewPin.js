@@ -139,7 +139,6 @@ const ImageWrapper = styled.div`
 `;
 const InfoWrapper = styled.div`
   display: inline-block;
-  // border: 1px blue solid;
   width: 440px;
   height: 600px; 
   }
