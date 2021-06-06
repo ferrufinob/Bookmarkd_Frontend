@@ -39,7 +39,6 @@ class App extends Component {
   };
 
   render() {
-    console.log("boards mounted in App");
     return (
       <div className="App">
         <Navbar user={this.props.user} logoutHandler={this.logoutHandler} />

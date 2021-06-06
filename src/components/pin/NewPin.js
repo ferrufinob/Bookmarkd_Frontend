@@ -34,7 +34,6 @@ class NewPin extends Component {
         {board.name}
       </option>
     ));
-    console.log(this.state.board);
     return (
       <FormWrapper>
         <form onSubmit={this.handleOnSubmit}>

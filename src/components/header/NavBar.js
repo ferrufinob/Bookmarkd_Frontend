@@ -9,7 +9,6 @@ import AddIcon from "@material-ui/icons/Add";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 const Navbar = (props) => {
-  console.log("in navbar", props.user);
   const { user } = props;
   return (
     <>

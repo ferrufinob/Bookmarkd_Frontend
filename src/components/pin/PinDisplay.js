@@ -9,7 +9,6 @@ class PinDisplay extends Component {
 
   render() {
     const { title, description, image, site_url, loading } = this.props;
-    console.log("pin display", this.props);
 
     return (
       <>

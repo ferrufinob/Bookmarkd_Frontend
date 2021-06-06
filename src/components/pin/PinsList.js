@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Wrapper } from "../pin/Pin-Styling";
+import { Wrapper } from "../../containers/Grid-Styling";
 
 const PinsList = (props) => {
   const { title, image, id } = props;

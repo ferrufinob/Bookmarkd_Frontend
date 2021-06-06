@@ -3,7 +3,7 @@ import { Component } from "react";
 import { connect } from "react-redux";
 import { getPins } from "../../redux/actions/pinsActions";
 import PinsList from "../pin/PinsList";
-import { Column } from "../pin/Pin-Styling";
+import { Column } from "../../containers/Grid-Styling";
 
 class BoardDisplay extends Component {
   componentDidMount() {
@@ -13,9 +13,9 @@ class BoardDisplay extends Component {
   renderBoardPins = () => {
     const boardId = this.props.match.params.id;
     return this.props.pins
-      .filter((pin) => {
-        return parseInt(pin.board_id) === parseInt(boardId);
-      })
+      .filter((pin) =>
+        pin ? parseInt(pin.board_id) === parseInt(boardId) : null
+      )
       .map((pin) => {
         return <PinsList key={pin.id} {...pin} />;
       });

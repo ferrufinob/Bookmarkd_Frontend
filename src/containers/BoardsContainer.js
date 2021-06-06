@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getBoards } from "../redux/actions/boardsActions";
 import BoardsList from "../components/board/BoardsList";
+import { Column } from "./Grid-Styling";
 
 class BoardsContainer extends Component {
   componentDidMount() {
@@ -9,13 +10,12 @@ class BoardsContainer extends Component {
   }
   render() {
     const { boards } = this.props;
-    console.log("board mounted in boards container");
     return (
-      <div>
-        {boards.map((board) => (
-          <BoardsList key={board.id} {...board} />
-        ))}
-      </div>
+      <Column>
+        {boards.map((board) =>
+          board ? <BoardsList key={board.id} {...board} /> : null
+        )}
+      </Column>
     );
   }
 }

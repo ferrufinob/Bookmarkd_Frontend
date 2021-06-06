@@ -3,7 +3,7 @@ import { Component } from "react";
 import { connect } from "react-redux";
 import PinsList from "../components/pin/PinsList";
 import { getPins } from "../redux/actions/pinsActions";
-import { Column } from "../components/pin/Pin-Styling";
+import { Column } from "./Grid-Styling";
 
 class PinsContainer extends Component {
   componentDidMount() {
@@ -11,15 +11,14 @@ class PinsContainer extends Component {
   }
 
   render() {
-    console.log("inside pin container");
     const { pins, loading } = this.props;
     return (
       <Column>
         {!loading ? (
           <>
-            {pins.map((pin) => (
-              <PinsList key={pin.id} {...pin} />
-            ))}
+            {pins.map((pin) =>
+              pin ? <PinsList key={pin.id} {...pin} /> : null
+            )}
           </>
         ) : (
           <h1>LOADING PINS :</h1>

@@ -3,11 +3,11 @@
 - Getting Board Pins options
 
 1. "/board" -> clicked -> "/boards/pins"(Route React) -> backend -> Pin index = if params[:board_id] : board.pins
-2. conditional rendering -> pins.filter(pin => pin.board_id === props.id <PinList pin={pin} key={prop.id}>)(prevents making a different fetch request just to get information I already have)
+2. conditional rendering -> pins.filter(pin => pin.board_id === props.id <PinList {...pin} key={prop.id}>)(prevents making a different fetch request just to get information I already have)
 
 ## Priority
 
-- User can click on board to view all pins belonging to that board
+- User can click on board to view all pins belonging to that board ✔
 - Add two dispatch actions to all my fetch requests
 - When new pin gets added redirect user to view that pin
 - Reset Pins and Boards in state when user exists that component/route
