@@ -2,8 +2,8 @@ import React from "react";
 import { Component } from "react";
 import { connect } from "react-redux";
 import { getPins } from "../../redux/actions/pinsActions";
+import { Column } from "../pin/Pin-Styling";
 import PinsList from "../pin/PinsList";
-import { Column } from "../../containers/Grid-Styling";
 
 class BoardDisplay extends Component {
   componentDidMount() {

@@ -40,7 +40,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div>
         <Navbar user={this.props.user} logoutHandler={this.logoutHandler} />
         <Switch>
           <Route
@@ -63,7 +63,10 @@ class App extends Component {
           <Route path="/pins/:id" component={PinDisplay} />
           <Route path="/pins" component={PinsContainer} />
           <Route path="/boards/:id/pins" component={BoardDisplay} />
-          <Route path="/boards" render={() => <BoardsContainer />} />
+          <Route
+            path="/boards"
+            render={() => <BoardsContainer pins={this.props.pins} />}
+          />
         </Switch>
       </div>
     );
@@ -73,6 +76,7 @@ class App extends Component {
 const mapStateToProps = (state) => ({
   user: state.user,
   boards: state.boards.boards,
+  pins: state.pins.pins,
 });
 
 export default withRouter(

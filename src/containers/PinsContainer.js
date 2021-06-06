@@ -3,7 +3,7 @@ import { Component } from "react";
 import { connect } from "react-redux";
 import PinsList from "../components/pin/PinsList";
 import { getPins } from "../redux/actions/pinsActions";
-import { Column } from "./Grid-Styling";
+import { Column } from "../components/pin/Pin-Styling";
 
 class PinsContainer extends Component {
   componentDidMount() {

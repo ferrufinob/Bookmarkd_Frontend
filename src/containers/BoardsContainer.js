@@ -1,26 +1,45 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getBoards } from "../redux/actions/boardsActions";
+import { getPins } from "../redux/actions/pinsActions";
 import BoardsList from "../components/board/BoardsList";
-import { Column } from "./Grid-Styling";
+import styled from "styled-components";
 
 class BoardsContainer extends Component {
   componentDidMount() {
     this.props.getBoards();
+    this.props.getPins();
   }
   render() {
     const { boards } = this.props;
     return (
-      <Column>
+      <BoardWrapper>
         {boards.map((board) =>
-          board ? <BoardsList key={board.id} {...board} /> : null
+          board ? (
+            <BoardsList key={board.id} {...board} pins={this.props.pins} />
+          ) : null
         )}
-      </Column>
+      </BoardWrapper>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
   boards: state.boards.boards,
+  pins: state.pins.pins,
 });
-export default connect(mapStateToProps, { getBoards })(BoardsContainer);
+
+const BoardWrapper = styled.div`
+  margin: 50px auto;
+  justify-content: center;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 15px;
+  img {
+    width: 20%;
+  }
+`;
+export default connect(mapStateToProps, { getBoards, getPins })(
+  BoardsContainer
+);

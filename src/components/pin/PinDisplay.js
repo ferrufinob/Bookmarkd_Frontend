@@ -13,11 +13,11 @@ class PinDisplay extends Component {
     return (
       <>
         {!loading ? (
-          <div>
+          <>
             <a href={site_url}>{title}</a>
             <img src={image} alt={title} />
             <p>{description}</p>
-          </div>
+          </>
         ) : (
           <h1>LOADING:</h1>
         )}
