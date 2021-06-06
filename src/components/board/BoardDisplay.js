@@ -3,6 +3,7 @@ import { Component } from "react";
 import { connect } from "react-redux";
 import { getPins } from "../../redux/actions/pinsActions";
 import PinsList from "../pin/PinsList";
+import { Column } from "../pin/Pin-Styling";
 
 class BoardDisplay extends Component {
   componentDidMount() {
@@ -20,7 +21,7 @@ class BoardDisplay extends Component {
       });
   };
   render() {
-    return <>{this.renderBoardPins()}</>;
+    return <Column>{this.renderBoardPins()}</Column>;
   }
 }
 

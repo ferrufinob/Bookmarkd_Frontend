@@ -3,7 +3,7 @@ import { Component } from "react";
 import { connect } from "react-redux";
 import PinsList from "../components/pin/PinsList";
 import { getPins } from "../redux/actions/pinsActions";
-import styled from "styled-components";
+import { Column } from "../components/pin/Pin-Styling";
 
 class PinsContainer extends Component {
   componentDidMount() {
@@ -34,20 +34,4 @@ const mapStateToProps = (state) => ({
   loading: state.loading,
 });
 
-const Column = styled.div`
-  margin: 50px auto;
-  justify-content: center;
-  text-align: center;
-  display: flex;
-  flex-wrap: wrap;
-  column-gap: 15px;
-  img {
-    border-radius: 20px;
-    height: auto;
-    width: 400px;
-  }
-  img:hover {
-    filter: brightness(50%);
-  }
-`;
 export default connect(mapStateToProps, { getPins })(PinsContainer);
