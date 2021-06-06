@@ -9,7 +9,7 @@ export const Column = styled.div`
   img {
     display: block;
     width: 100%;
-    border-radius: 5px;
+    border-radius: 20px;
   }
   img:hover {
     filter: brightness(50%);

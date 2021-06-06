@@ -65,7 +65,12 @@ class App extends Component {
           <Route path="/boards/:id/pins" component={BoardDisplay} />
           <Route
             path="/boards"
-            render={() => <BoardsContainer pins={this.props.pins} />}
+            render={() => (
+              <BoardsContainer
+                pins={this.props.pins}
+                user={this.props.user.currentUser}
+              />
+            )}
           />
         </Switch>
       </div>

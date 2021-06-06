@@ -22,40 +22,27 @@ const BoardsList = (props) => {
   return (
     <>
       <Link to={`/boards/${id}/pins`}>
-        <Wrapper>
-          {boardPinImages()}
-          <figcaption>{name}</figcaption>
-        </Wrapper>
+        <Wrapper>{boardPinImages()}</Wrapper>
+        <figcaption>{name}</figcaption>
       </Link>
     </>
   );
 };
 
 const Wrapper = styled.div`
-  height: 350px;
-  width: 340px;
+  height: 200px;
+  width: 250px;
   overflow: hidden;
   background: #fefefe;
   border: 2px solid #fcfcfc;
   box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
   margin: 0 10px 15px;
-  padding: 15px;
-  padding-bottom: 10px;
   border-radius: 20px;
-  align-text: center;
 
   img {
-    width: 130px;
-    height: auto;
-    margin: 10px;
-    border: 1px green solid;
-    border-radius: 5px;
-  }
-  figcaption {
-    color: #444;
+    width: 50%;
     display: block;
-    margin: 15px 0 15px 0;
-    font-size: 20px;
+    float: left;
   }
 `;
 export default BoardsList;
