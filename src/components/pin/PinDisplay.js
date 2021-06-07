@@ -14,7 +14,7 @@ class PinDisplay extends Component {
       <>
         {!loading ? (
           <>
-            <img src={image.url} alt={title} />
+            <img src={image} alt={title} />
             <a href={site_url}>{title}</a>
             <p>{description}</p>
           </>

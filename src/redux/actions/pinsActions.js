@@ -35,8 +35,8 @@ export const addPin = (pinData) => {
     let configObj = {
       method: "POST",
       headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
+        // Accept: "application/json",
+        // "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
       body: pinData,

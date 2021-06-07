@@ -14,7 +14,7 @@ const BoardsList = (props) => {
       .map((pin) => {
         return pin.image ? (
           <>
-            <img src={pin.image.url} alt={name} />
+            <img src={pin.image} alt={name} />
           </>
         ) : null;
       });

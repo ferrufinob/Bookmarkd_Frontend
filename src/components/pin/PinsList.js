@@ -7,7 +7,7 @@ const PinsList = (props) => {
   return (
     <Wrapper>
       <Link to={`/pins/${id}`}>
-        <img src={image.url} alt={title} />
+        <img src={image} alt={title} />
       </Link>
       <figcaption>{title}</figcaption>
     </Wrapper>
