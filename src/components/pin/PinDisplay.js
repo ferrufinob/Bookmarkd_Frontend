@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { connect } from "react-redux";
 import { setSelectedPin } from "../../redux/actions/pinsActions";
+import styled from "styled-components";
 class PinDisplay extends Component {
   componentDidMount() {
     const id = this.props.match.params.id;
@@ -9,13 +10,12 @@ class PinDisplay extends Component {
 
   render() {
     const { title, description, image, site_url, loading } = this.props;
-
     return (
       <>
         {!loading ? (
           <>
-            <a href={site_url}>{title}</a>
             <img src={image} alt={title} />
+            <a href={site_url}>{title}</a>
             <p>{description}</p>
           </>
         ) : (

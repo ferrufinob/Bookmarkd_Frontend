@@ -16,12 +16,26 @@
   - ex: when user logs out, reset currentUser from state
   - ! Boards are fine to be mounted at all times since I need them for dropdown
 - Figure out why my pins container keeps re-rendering 6 times upon page reload
+- add delete functionality(how am to going to prevent other users from deleting pin that isn't theirs?)
 
-## Not urgent
+  ```javascript
+   {user_id === this.props.user.id ? (
+            <>
+            <DeleteIcon />
+          ) : null}
+        </>
+  ```
+
+## Not urgent/Future Features
 
 - Look into cloudinary for images
-- Find a way for the board cover to be the image of the last pin added(maybe user can edit their board and add an image if they'd like)
+- Find a way for the board cover to be the image of the last pin added ✔
 - Make sure that logged in user can't acess login/ sign in or welcome paths.
 - Add like feature
 - user can upload profile picture
 - display profile of user who posted pin and make it clickable
+- to make individual profiles, in backend set up User show
+  - User.find.by_id(params[:id])
+    - user = user
+    - current_user = session_user
+    - pins = user.pins

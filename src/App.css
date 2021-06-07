@@ -1,6 +1,7 @@
 body,
 html {
   margin: 0;
+  padding: 0;
   /* overflow: hidden; */
 }
 
@@ -52,4 +53,12 @@ select {
   background-color: #f9f9f9;
   font-size: 18px;
   margin-top: 120px;
+}
+
+.flex-container {
+  @media (max-width: 800px) {
+    .flex-container {
+      flex: 100%;
+    }
+  }
 }

@@ -105,14 +105,13 @@ const FormWrapper = styled.div`
   border-radius: 5px;
   height: 650px;
   width: 880px;
-  // margin: 0 auto;
   padding: 40px 40px 0px;
   top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
   box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
   background-color: #f9f9f9;
-  button{
+  button {
     background-color: #e85a4f;
     float: right;
     border-radius: 10px;
@@ -123,24 +122,22 @@ const FormWrapper = styled.div`
     color: white;
     font-weight: 700;
     font-size: 18px;
-    box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);3
+    box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
   }
-  button:hover{
- background-color: #e98074;
-  }
+  button:hover {
+    background-color: #e98074;
   }
 `;
 
 const ImageWrapper = styled.div`
   display: inline-block;
-  border: 2px #838d8a dashed;
+  border: 3px #838d8a dashed;
   width: 440px;
   height: 600px;
 `;
 const InfoWrapper = styled.div`
   display: inline-block;
   width: 440px;
-  height: 600px; 
-  }
+  height: 600px;
 `;
 export default connect(null, { addPin })(NewPin);

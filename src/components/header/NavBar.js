@@ -108,9 +108,8 @@ const Buttons = css`
 `;
 
 const Home = styled.button`
- ${Buttons}
+  ${Buttons}
   background-color: #b4dfe5;
-  a {
   :hover {
     background-color: #fbe8a6;
   }

@@ -15,7 +15,7 @@ const Welcome = () => {
 };
 
 const WelcomeWrapper = styled.div`
-  dispay: inline-block;
+  display: inline-block;
   margin: 0 auto;
   width: 700px;
   height: 700px;

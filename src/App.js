@@ -40,7 +40,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <>
         <Navbar user={this.props.user} logoutHandler={this.logoutHandler} />
         <Switch>
           <Route
@@ -60,7 +60,13 @@ class App extends Component {
             path="/pins/new"
             render={() => <NewPin boards={this.props.boards} />}
           />
-          <Route path="/pins/:id" component={PinDisplay} />
+          <Route
+            path="/pins/:id"
+            render={(routerProps) => (
+              // !important: need this to be able to use params match AND user prop
+              <PinDisplay {...routerProps} user={this.props.user.currentUser} />
+            )}
+          />
           <Route path="/pins" component={PinsContainer} />
           <Route path="/boards/:id/pins" component={BoardDisplay} />
           <Route
@@ -73,7 +79,7 @@ class App extends Component {
             )}
           />
         </Switch>
-      </div>
+      </>
     );
   }
 }
