@@ -13,9 +13,9 @@ const BoardsList = (props) => {
       .slice(0, 4)
       .map((pin) => {
         return pin.image ? (
-          <>
+          <div key={pin.id}>
             <img src={pin.image} alt={name} />
-          </>
+          </div>
         ) : null;
       });
   };

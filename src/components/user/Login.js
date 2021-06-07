@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Header, Button, FormWrapper } from "./Form-Styling";
-import IconButton from "@material-ui/core/IconButton";
 
 class Login extends Component {
   state = {
