@@ -7,7 +7,7 @@ class NewPin extends Component {
   state = {
     title: "",
     description: "",
-    image: " ",
+    image: null,
     site_url: "",
     board: "",
   };
@@ -18,14 +18,18 @@ class NewPin extends Component {
 
   handleOnSubmit = (event) => {
     event.preventDefault();
-    this.props.addPin(this.state);
-    this.setState({
-      title: "",
-      description: "",
-      image: " ",
-      site_url: "",
-      board: "",
-    });
+    // this.props.addPin(this.state);
+    const formData = new FormData();
+    formData.append("title", this.state.title);
+    formData.append("description", this.state.description);
+    formData.append("site_url", this.state.site_url);
+    formData.append("board", this.state.board);
+    formData.append("image", this.state.image);
+    this.props.addPin(formData);
+  };
+
+  onImageChange = (event) => {
+    this.setState({ image: event.target.files[0] });
   };
 
   render() {
@@ -41,10 +45,10 @@ class NewPin extends Component {
             <ImageWrapper>
               <label>Image:</label>
               <input
-                type="text"
-                name="image"
-                value={this.state.image}
-                onChange={this.handleOnChange}
+                type="file"
+                accept="image/png, image/jpeg"
+                multiple={false}
+                onChange={this.onImageChange}
               />
             </ImageWrapper>
             <InfoWrapper>

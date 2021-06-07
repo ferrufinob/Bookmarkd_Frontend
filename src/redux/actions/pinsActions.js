@@ -39,7 +39,7 @@ export const addPin = (pinData) => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(pinData),
+      body: pinData,
     };
     fetch(API + "/pins", configObj)
       .then((res) => res.json())
