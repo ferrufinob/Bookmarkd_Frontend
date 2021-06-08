@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addPin } from "../../redux/actions/pinsActions";
 import styled from "styled-components";
+import InsertPhotoIcon from "@material-ui/icons/InsertPhoto";
+import IconButton from "@material-ui/core/IconButton";
 
 class NewPin extends Component {
   state = {
@@ -18,7 +20,6 @@ class NewPin extends Component {
 
   handleOnSubmit = (event) => {
     event.preventDefault();
-    // this.props.addPin(this.state);
     const formData = new FormData();
     formData.append("title", this.state.title);
     formData.append("description", this.state.description);
@@ -43,13 +44,20 @@ class NewPin extends Component {
         <form onSubmit={this.handleOnSubmit}>
           <Wrapper>
             <ImageWrapper>
-              <label>Image:</label>
               <input
                 type="file"
                 accept="image/png, image/jpeg"
                 multiple={false}
                 onChange={this.onImageChange}
+                id="icon-button-file"
+                style={{ display: "none" }}
               />
+              <label htmlFor="icon-button-file">
+                <IconButton component="span">
+                  <InsertPhotoIcon fontSize="large" />
+                  <p>Click to upload</p>
+                </IconButton>
+              </label>
             </ImageWrapper>
             <InfoWrapper>
               <input
@@ -138,6 +146,11 @@ const ImageWrapper = styled.div`
   border: 3px #838d8a dashed;
   width: 440px;
   height: 600px;
+  text-align: center;
+
+  span {
+    margin: 100px auto;
+  }
 `;
 const InfoWrapper = styled.div`
   display: inline-block;

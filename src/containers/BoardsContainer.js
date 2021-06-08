@@ -1,15 +1,15 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { getBoards } from "../redux/actions/boardsActions";
-import { getPins } from "../redux/actions/pinsActions";
+// import { connect } from "react-redux";
+// import { getBoards } from "../redux/actions/boardsActions";
+// import { getPins } from "../redux/actions/pinsActions";
 import BoardsList from "../components/board/BoardsList";
 import styled from "styled-components";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 class BoardsContainer extends Component {
-  componentDidMount() {
-    this.props.getBoards();
-    this.props.getPins();
-  }
+  // componentDidMount() {
+  //   // this.props.getBoards();
+  //   this.props.getPins();
+  // }
   render() {
     const { boards, user } = this.props;
     return (
@@ -32,11 +32,6 @@ class BoardsContainer extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  boards: state.boards.boards,
-  pins: state.pins.pins,
-});
-
 const BoardWrapper = styled.div`
   margin: 100px auto;
   justify-content: center;
@@ -58,6 +53,4 @@ const UserInfo = styled.h1`
   text-align: center;
   margin-top: 100px;
 `;
-export default connect(mapStateToProps, { getBoards, getPins })(
-  BoardsContainer
-);
+export default BoardsContainer;

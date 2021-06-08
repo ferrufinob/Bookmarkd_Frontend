@@ -7,6 +7,7 @@
 
 ## Priority
 
+- ERROR HANDLING!!
 - Search bar: Make this work through backend(fetch request, nicky dovers video), more precise than front end search
 - User can click on board to view all pins belonging to that board ✔
 - Add two dispatch actions to all my fetch requests
@@ -28,7 +29,7 @@
 
 ## Not urgent/Future Features
 
-- Look into cloudinary for images
+- User can preview their uploaded image
 - Find a way for the board cover to be the image of the last pin added ✔
 - Make sure that logged in user can't acess login/ sign in or welcome paths.
 - Add like feature
