@@ -49,3 +49,5 @@ export const addPin = (pinData) => {
       });
   };
 };
+
+export const unsetPin = () => ({ type: "UNSET_PIN" });

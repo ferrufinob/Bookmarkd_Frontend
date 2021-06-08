@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { connect } from "react-redux";
-import { setSelectedPin } from "../../redux/actions/pinsActions";
+import { setSelectedPin, unsetPin } from "../../redux/actions/pinsActions";
 import styled from "styled-components";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 class PinDisplay extends Component {
@@ -9,6 +9,9 @@ class PinDisplay extends Component {
     this.props.setSelectedPin(id);
   }
 
+  componentWillUnmount() {
+    this.props.unsetPin();
+  }
   render() {
     const { title, description, image, site_url, userName, loading } =
       this.props;
@@ -84,4 +87,6 @@ const PinInfo = styled.div`
 const Username = styled.h5`
   text-align: center;
 `;
-export default connect(mapStateToProps, { setSelectedPin })(PinDisplay);
+export default connect(mapStateToProps, { setSelectedPin, unsetPin })(
+  PinDisplay
+);
