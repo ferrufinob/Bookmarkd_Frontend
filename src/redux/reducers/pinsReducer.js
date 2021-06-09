@@ -2,6 +2,7 @@ const initialState = {
   pins: [],
   selectedPin: null,
   loading: true,
+  errorMessage: "",
   filters: {
     search: "",
   },
@@ -24,7 +25,7 @@ const pinsReducer = (state = initialState, action) => {
     case "UNSET_PIN":
       return { ...state, selectedPin: null };
 
-    case "LOADING_PIN":
+    case "LOADING_SELECTED_PIN":
       return { ...state, selectedPin: { ...state.selectedPin }, loading: true };
 
     case "LOADING_PINS":

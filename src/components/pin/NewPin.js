@@ -46,6 +46,7 @@ class NewPin extends Component {
             <ImageWrapper>
               <input
                 type="file"
+                required
                 accept="image/png, image/jpeg"
                 multiple={false}
                 onChange={this.onImageChange}
@@ -70,6 +71,7 @@ class NewPin extends Component {
               />
               <select
                 name="board"
+                required
                 value={this.state.board}
                 onChange={this.handleOnChange}
               >
@@ -86,6 +88,7 @@ class NewPin extends Component {
               />
               <input
                 type="text"
+                required
                 name="description"
                 placeholder="Tell everyone what your Pin is about"
                 value={this.state.description}
@@ -94,6 +97,7 @@ class NewPin extends Component {
               />
               <input
                 type="text"
+                required
                 name="site_url"
                 placeholder="Add a destination link"
                 value={this.state.site_url}
@@ -110,7 +114,7 @@ class NewPin extends Component {
 }
 const Wrapper = styled.div`
   display: flex;
-  overflow: hidden;
+  /* overflow: hidden; */
 `;
 
 const FormWrapper = styled.div`
@@ -119,11 +123,12 @@ const FormWrapper = styled.div`
   height: 650px;
   width: 880px;
   padding: 40px 40px 0px;
-  top: 60%;
+  top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
   box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
   background-color: #f9f9f9;
+  z-index: 0;
   button {
     background-color: #e85a4f;
     float: right;
