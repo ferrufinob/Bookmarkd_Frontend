@@ -5,6 +5,7 @@ import IconButton from "@material-ui/core/IconButton";
 import { connect } from "react-redux";
 import { handleSearchFormChange } from "../../redux/actions/pinsActions";
 const SearchBar = (props) => {
+  const handleSubmit = (e) => e.preventDefault();
   return (
     <>
       <SearchWrapper>
@@ -12,7 +13,7 @@ const SearchBar = (props) => {
           <IconButton>
             <SearchIcon />
           </IconButton>
-          <form>
+          <form onSubmit={handleSubmit}>
             <input
               type="text"
               name="search"

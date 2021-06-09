@@ -39,9 +39,14 @@ class App extends Component {
   };
 
   render() {
+    const path = this.props.location.pathname;
     return (
       <>
-        <Navbar user={this.props.user} logoutHandler={this.logoutHandler} />
+        <Navbar
+          user={this.props.user}
+          logoutHandler={this.logoutHandler}
+          path={path}
+        />
         <Switch>
           <Route
             path="/login"

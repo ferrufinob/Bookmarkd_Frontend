@@ -23,21 +23,21 @@ const Navbar = (props) => {
           <Home>
             <NavLink to="/pins">Home</NavLink>
           </Home>
-          <SearchBar />
+          {props.path === "/pins" && <SearchBar />}
           <NavUnlisted>
             <NavIcons>
               <IconButton>
                 <NavLink to="/boards">
-                  <FaceIcon />
+                  <FaceIcon fontSize="large" />
                 </NavLink>
               </IconButton>
               <IconButton>
                 <NavLink to="/pins/new">
-                  <AddIcon />
+                  <AddIcon fontSize="large" />
                 </NavLink>
               </IconButton>
               <IconButton onClick={props.logoutHandler}>
-                <ExitToAppIcon />
+                <ExitToAppIcon fontSize="large" />
               </IconButton>
             </NavIcons>
           </NavUnlisted>
@@ -66,6 +66,7 @@ const Navbar = (props) => {
 
 const Wrapper = styled.div`
   display: flex;
+
   align-items: center;
   height: 56px;
   padding: 12px 4px 4px 16px;
@@ -79,6 +80,8 @@ const Logo = styled.div`
 `;
 
 const NavUnlisted = styled.ul`
+  margin-left: auto;
+
   a {
     color: #303c6c;
   }
