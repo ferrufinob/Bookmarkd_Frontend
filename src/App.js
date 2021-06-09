@@ -58,7 +58,9 @@ class App extends Component {
           />
           <Route
             path="/pins/new"
-            render={() => <NewPin boards={this.props.boards} />}
+            render={(routerProps) => (
+              <NewPin boards={this.props.boards} {...routerProps} />
+            )}
           />
           <Route
             path="/pins/:id"

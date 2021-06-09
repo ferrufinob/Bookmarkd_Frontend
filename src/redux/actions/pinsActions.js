@@ -27,7 +27,7 @@ export const setSelectedPin = (id) => {
   };
 };
 
-export const addPin = (pinData) => {
+export const addPin = (pinData, history) => {
   const token = localStorage.getItem("token");
   return (dispatch) => {
     // !add LOADING here
@@ -44,9 +44,14 @@ export const addPin = (pinData) => {
     fetch(API + "/pins", configObj)
       .then((res) => res.json())
       .then((pin) => {
-        console.log(pin);
-        dispatch(ADD_PIN(pin));
-      });
+        if (pin.error) {
+          alert(pin.error);
+        } else {
+          dispatch(ADD_PIN(pin));
+          history.push(`/pins/${pin.pin.id}`);
+        }
+      })
+      .catch(console.log);
   };
 };
 

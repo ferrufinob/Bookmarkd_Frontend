@@ -26,7 +26,7 @@ class NewPin extends Component {
     formData.append("site_url", this.state.site_url);
     formData.append("board", this.state.board);
     formData.append("image", this.state.image);
-    this.props.addPin(formData);
+    this.props.addPin(formData, this.props.history);
   };
 
   onImageChange = (event) => {
