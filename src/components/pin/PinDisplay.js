@@ -2,7 +2,9 @@ import { Component } from "react";
 import { connect } from "react-redux";
 import { setSelectedPin, unsetPin } from "../../redux/actions/pinsActions";
 import styled from "styled-components";
-import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+
+import PinImage from "./PinImage";
+import PinBody from "./PinBody";
 class PinDisplay extends Component {
   componentDidMount() {
     const id = this.props.match.params.id;
@@ -13,25 +15,16 @@ class PinDisplay extends Component {
     this.props.unsetPin();
   }
   render() {
-    const { title, description, image, site_url, userName, loading } =
-      this.props;
+    const { title, image, loading } = this.props;
     return (
       <>
         {!loading ? (
           <Wrapper>
             <Child>
-              <img src={image} alt={title} />
+              <PinImage image={image} title={title} />
             </Child>
             <Child>
-              <a href={site_url}>{site_url}</a>
-              <PinInfo>
-                <h1>{title}</h1>
-                <p>{description}</p>
-              </PinInfo>
-              <Username>
-                <AccountCircleIcon fontSize="small" />
-                {userName}
-              </Username>
+              <PinBody {...this.props} />
             </Child>
           </Wrapper>
         ) : (
@@ -75,18 +68,6 @@ const Child = styled.section`
   flex-basis: 100%;
 `;
 
-const PinInfo = styled.div`
-  text-align: center;
-  margin-top: 50px;
-  margin-left: 10px;
-  h1 {
-    font-size: 30px;
-  }
-`;
-
-const Username = styled.h5`
-  text-align: center;
-`;
 export default connect(mapStateToProps, { setSelectedPin, unsetPin })(
   PinDisplay
 );

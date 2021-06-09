@@ -5,6 +5,8 @@
 1. "/board" -> clicked -> "/boards/:id/pins"(Route React) -> backend -> Pin index = if params[:board_id] : board.pins
 2. conditional rendering -> pins.filter(pin => pin.board_id === props.id < PinList {...pin} key={prop.id}>)(prevents making a different fetch request just to get information I already have)
 
+- filter out main pin page to not display pins beloging to logged in user.
+
 ## Priority
 
 - ERROR HANDLING!!
