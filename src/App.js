@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import { connect } from "react-redux";
-import { Switch, Route, withRouter } from "react-router-dom";
+import { Switch, Route, withRouter, Redirect } from "react-router-dom";
 import {
   signupUserFetch,
   loginUserFetch,
@@ -40,6 +40,7 @@ class App extends Component {
 
   render() {
     const path = this.props.location.pathname;
+    const token = localStorage.getItem("token");
     return (
       <>
         <Navbar
@@ -50,16 +51,34 @@ class App extends Component {
         <Switch>
           <Route
             path="/login"
-            render={() => <Login submitHandler={this.loginHandler} />}
+            render={() =>
+              this.props.user && token ? (
+                <Redirect to="/pins" />
+              ) : (
+                <Login submitHandler={this.loginHandler} />
+              )
+            }
           />
           <Route
             path="/signup"
-            render={() => <Signup submitHandler={this.signUpHandler} />}
+            render={() =>
+              this.props.user && token ? (
+                <Redirect to="/pins" />
+              ) : (
+                <Signup submitHandler={this.signUpHandler} />
+              )
+            }
           />
           <Route
             exact
             path="/"
-            render={(routerProps) => <Welcome {...routerProps} />}
+            render={(routerProps) =>
+              this.props.user && token ? (
+                <Redirect to="/pins" />
+              ) : (
+                <Welcome {...routerProps} />
+              )
+            }
           />
           <Route
             path="/pins/new"
