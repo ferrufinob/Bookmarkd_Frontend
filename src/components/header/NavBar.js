@@ -66,9 +66,9 @@ const Navbar = (props) => {
 
 const Wrapper = styled.div`
   display: flex;
-
+  border-bottom: 0.1px solid #ccc;
   align-items: center;
-  height: 56px;
+  height: 65px;
   padding: 12px 4px 4px 16px;
   background-color: white;
   color: black;
