@@ -73,6 +73,7 @@ class NewPin extends Component {
                 value={this.state.board}
                 onChange={this.handleOnChange}
               >
+                <option value=""> Select Board&hellip;</option>
                 {boards}
               </select>
               <input
