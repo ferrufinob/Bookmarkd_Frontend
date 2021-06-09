@@ -62,7 +62,7 @@ const Searchbar = styled.div`
 `;
 
 const mapStateToProps = (state) => ({
-  ...state.pins.search,
+  ...state.pins.filters,
 });
 
 export default connect(mapStateToProps, { handleSearchFormChange })(SearchBar);

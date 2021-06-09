@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import PinsList from "../components/pin/PinsList";
 import { getPins } from "../redux/actions/pinsActions";
 import { Column } from "../components/pin/Pin-Styling";
-import SearchBar from "../components/header/SearchBar";
 
 class PinsContainer extends Component {
   componentDidMount() {
@@ -35,7 +34,7 @@ class PinsContainer extends Component {
 const mapStateToProps = (state) => ({
   pins: state.pins.pins,
   loading: state.loading,
-  search: state.pins.search.search,
+  ...state.pins.filters,
 });
 
 export default connect(mapStateToProps, { getPins })(PinsContainer);

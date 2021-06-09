@@ -2,7 +2,9 @@ const initialState = {
   pins: [],
   selectedPin: null,
   loading: true,
-  search: "",
+  filters: {
+    search: "",
+  },
 };
 
 const pinsReducer = (state = initialState, action) => {
@@ -31,8 +33,8 @@ const pinsReducer = (state = initialState, action) => {
     case "SEARCH_FORM_CHANGE":
       return {
         ...state,
-        search: {
-          ...state.search,
+        filters: {
+          ...state.filters,
           [action.payload.name]: action.payload.value,
         },
       };
