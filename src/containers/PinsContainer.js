@@ -4,19 +4,23 @@ import { connect } from "react-redux";
 import PinsList from "../components/pin/PinsList";
 import { getPins } from "../redux/actions/pinsActions";
 import { Column } from "../components/pin/Pin-Styling";
+import SearchBar from "../components/header/SearchBar";
 
 class PinsContainer extends Component {
   componentDidMount() {
     this.props.getPins();
   }
-
+  searchedPins = () =>
+    this.props.pins.filter((pin) =>
+      pin.title.toLowerCase().includes(this.props.search.toLowerCase())
+    );
   render() {
-    const { pins, loading } = this.props;
+    const { loading } = this.props;
     return (
       <Column>
         {!loading ? (
           <>
-            {pins.map((pin) =>
+            {this.searchedPins().map((pin) =>
               pin ? <PinsList key={pin.id} {...pin} /> : null
             )}
           </>
@@ -31,6 +35,7 @@ class PinsContainer extends Component {
 const mapStateToProps = (state) => ({
   pins: state.pins.pins,
   loading: state.loading,
+  search: state.pins.search.search,
 });
 
 export default connect(mapStateToProps, { getPins })(PinsContainer);

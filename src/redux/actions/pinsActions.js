@@ -14,7 +14,14 @@ export const getPins = () => {
     dispatch({ type: "LOADING_PINS" });
     fetch(API + "/pins")
       .then((res) => res.json())
-      .then((pins) => dispatch(GET_PINS(pins)));
+      .then((pins) => {
+        if (pins.error) {
+          alert(pins.error);
+        } else {
+          dispatch(GET_PINS(pins));
+        }
+      })
+      .catch(console.log);
   };
 };
 
@@ -35,8 +42,6 @@ export const addPin = (pinData, history) => {
     let configObj = {
       method: "POST",
       headers: {
-        // Accept: "application/json",
-        // "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
       body: pinData,
@@ -56,3 +61,8 @@ export const addPin = (pinData, history) => {
 };
 
 export const unsetPin = () => ({ type: "UNSET_PIN" });
+
+export const handleSearchFormChange = (e) => ({
+  type: "SEARCH_FORM_CHANGE",
+  payload: { name: e.target.name, value: e.target.value },
+});

@@ -54,7 +54,7 @@ class App extends Component {
           <Route
             exact
             path="/"
-            render={(routeProps) => <Welcome routeProps={routeProps} />}
+            render={(routerProps) => <Welcome {...routerProps} />}
           />
           <Route
             path="/pins/new"
@@ -65,7 +65,6 @@ class App extends Component {
           <Route
             path="/pins/:id"
             render={(routerProps) => (
-              // !important: need this to be able to use params match AND user prop
               <PinDisplay {...routerProps} user={this.props.user.currentUser} />
             )}
           />
@@ -74,10 +73,7 @@ class App extends Component {
           <Route
             path="/boards"
             render={() => (
-              <BoardsContainer
-                pins={this.props.pins}
-                user={this.props.user.currentUser}
-              />
+              <BoardsContainer user={this.props.user.currentUser} />
             )}
           />
         </Switch>
@@ -89,7 +85,6 @@ class App extends Component {
 const mapStateToProps = (state) => ({
   user: state.user,
   boards: state.boards.boards,
-  pins: state.pins.pins,
 });
 
 export default withRouter(

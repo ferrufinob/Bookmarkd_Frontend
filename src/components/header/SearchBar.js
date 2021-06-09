@@ -2,8 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import SearchIcon from "@material-ui/icons/Search";
 import IconButton from "@material-ui/core/IconButton";
-
-const SearchBar = () => {
+import { connect } from "react-redux";
+import { handleSearchFormChange } from "../../redux/actions/pinsActions";
+const SearchBar = (props) => {
   return (
     <>
       <SearchWrapper>
@@ -12,7 +13,13 @@ const SearchBar = () => {
             <SearchIcon />
           </IconButton>
           <form>
-            <input type="text" />
+            <input
+              type="text"
+              name="search"
+              value={props.search}
+              onChange={props.handleSearchFormChange}
+            />
+            <button type="submit"></button>
           </form>
         </Searchbar>
       </SearchWrapper>
@@ -54,4 +61,8 @@ const Searchbar = styled.div`
   }
 `;
 
-export default SearchBar;
+const mapStateToProps = (state) => ({
+  ...state.pins.search,
+});
+
+export default connect(mapStateToProps, { handleSearchFormChange })(SearchBar);

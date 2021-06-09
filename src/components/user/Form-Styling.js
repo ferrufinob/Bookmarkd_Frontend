@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Header = styled.h1`
+export const Header = styled.h2`
   text-align: center;
 `;
 
@@ -13,14 +13,15 @@ export const Input = styled.input`
 `;
 
 export const FormWrapper = styled.div`
-  width: 382px;
+  width: 500px;
   overflow: hidden;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 80px;
-  background: #eae7dc;
+  background: #ecf3f9;
+  box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
   border-radius: 15px;
 
   a {

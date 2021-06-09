@@ -3,33 +3,34 @@ import styled from "styled-components";
 
 const Welcome = () => {
   return (
-    <WelcomeWrapper className="welcome-div">
-      <h2>Find and save new ideas to try.</h2>
-      <img
-        src="/WelcomeCollage.jpeg"
-        alt="Pins Collage"
-        className="welcome-img"
-      />
-    </WelcomeWrapper>
+    <>
+      <Header>Find and save new ideas to try.</Header>
+      <WelcomeWrapper className="welcome-div"></WelcomeWrapper>
+    </>
   );
 };
 
 const WelcomeWrapper = styled.div`
-  display: block;
-  margin: 0 auto;
-  width: 700px;
-  height: 700px;
-  position: relative;
-  h2 {
-    color: rgb(97, 140, 123);
-    font-weight: 700;
-    text-align: center;
-  }
+  background-image: url("WelcomeCollage.jpeg");
+  width: 100%;
+  height: 130%;
+  position: absolute;
+  display: flex;
+  background-size: cover;
+  justify-content: center;
+  z-index: 0;
+
   img {
     max-width: 100%;
     height: 100%;
     position: absolute;
   }
+`;
+
+const Header = styled.h1`
+  color: #618c7b;
+  font-weight: 700;
+  text-align: center;
 `;
 
 export default Welcome;
