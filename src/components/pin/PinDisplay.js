@@ -44,7 +44,7 @@ const Wrapper = styled.section`
   background: #fefefe;
   border: 2px solid #fcfcfc;
   box-shadow: 0 1px 4px rgba(34, 25, 25, 0.4);
-  width: 100%;
+  width: 80%;
   margin: 50px auto;
   border-radius: 20px;
   img {
@@ -54,9 +54,6 @@ const Wrapper = styled.section`
   }
   a {
     color: #444;
-    float: left;
-    margin-top: 10px;
-    margin-left: 10px;
     font-size: 18px;
   }
   @media (min-width: 768px) {
@@ -65,7 +62,9 @@ const Wrapper = styled.section`
 `;
 
 const Child = styled.section`
+  text-align: center;
   flex-basis: 100%;
+  line-height: 1.5;
 `;
 
 export default connect(mapStateToProps, { setSelectedPin, unsetPin })(

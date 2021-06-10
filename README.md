@@ -1,70 +1,65 @@
-# Getting Started with Create React App
+# Bookmarkd
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Bookmarkd is a Pinterest inspired picture sharing application. Bookmarkd allows users to create pins, create boards, and search through other users pins.
 
-## Available Scripts
+[Backend Repo](https://github.com/ferrufinob/Bookmarkd_Backend.git)
 
-In the project directory, you can run:
+![app](BookmarkdGiphy.gif)
 
-### `yarn start`
+## Current Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Single Page App(SPA)
+- JWT User Authentication
+- Discover others pins through Search bar.
+- User Profile provides user a view of their boards and corresponding pins.
+- Pin and Board creation
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Built with
 
-### `yarn test`
+- Rails Backend
+- Postgresql
+- React/Redux Frontend
+- Styled-components
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Installation
 
-### `yarn build`
+Backend
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```rails
+git clone
+bundle install
+rails db:create
+rails db:migrate
+rails s
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Open brower to <http://localhost/3000> to starts Rails API
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Frontend
 
-### `yarn eject`
+```javascript
+git clone
+npm install
+npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+React will launch <http://localhost/5000>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Future Features
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Bookmarkd was built in two weeks, and more features are to come.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Switch over to React Hooks
+- Likes: User can like other users pins
+- Comments: Users can leave comments on pins
+- Friends: User can follow other users and be followed back
+- Full CRUD for pins and boards
 
-## Learn More
+## Contributing
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+Please make sure to update tests as appropriate.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## License
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[MIT](https://choosealicense.com/licenses/mit/)

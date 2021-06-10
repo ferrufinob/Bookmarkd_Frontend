@@ -18,7 +18,7 @@ export const loginUserFetch = (userInfo, history) => {
           dispatch(GET_USER(user.user));
           history.push("/pins");
         } else {
-          console.log(user.error);
+          alert(user.error);
         }
       })
       .catch(console.log);
@@ -41,7 +41,7 @@ export const signupUserFetch = (userInfo, history) => {
           dispatch(GET_USER(user.user));
           history.push("/pins");
         } else {
-          console.log(user.error);
+          alert(user.error);
         }
       })
       .catch(console.log);

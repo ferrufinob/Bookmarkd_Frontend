@@ -5,20 +5,23 @@ const Welcome = () => {
   return (
     <>
       <Header>Find and save new ideas to try.</Header>
-      <WelcomeWrapper className="welcome-div"></WelcomeWrapper>
+      <WelcomeWrapper className="welcome-div">
+        <img src="WelcomeCollage.jpeg" />
+      </WelcomeWrapper>
     </>
   );
 };
 
 const WelcomeWrapper = styled.div`
-  background-image: url("WelcomeCollage.jpeg");
   width: 100%;
-  height: 130%;
+  height: 100%;
   position: absolute;
-  display: flex;
-  background-size: cover;
   justify-content: center;
   z-index: 0;
+
+  img {
+    max-width: 100%;
+  }
 `;
 
 const Header = styled.h1`
