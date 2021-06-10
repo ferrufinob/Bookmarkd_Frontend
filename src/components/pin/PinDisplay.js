@@ -14,6 +14,7 @@ class PinDisplay extends Component {
   componentWillUnmount() {
     this.props.unsetPin();
   }
+
   render() {
     const { title, image, loading } = this.props;
     return (

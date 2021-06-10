@@ -10,7 +10,7 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 const Navbar = (props) => {
   const { user } = props;
-
+  console.log("Navbar");
   return (
     <>
       {user && localStorage.getItem("token") ? (

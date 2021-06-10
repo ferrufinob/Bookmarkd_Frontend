@@ -7,7 +7,8 @@ import {
   loginUserFetch,
   fetchLoggedInUser,
 } from "./redux/actions/userActions";
-// import { getBoards } from "./redux/actions/boardsActions";
+import { getPins } from "./redux/actions/pinsActions";
+import { getBoards } from "./redux/actions/boardsActions";
 
 import PinsContainer from "./containers/PinsContainer";
 import BoardsContainer from "./containers/BoardsContainer";
@@ -23,6 +24,8 @@ import Navbar from "./components/header/NavBar";
 class App extends Component {
   componentDidMount() {
     this.props.fetchLoggedInUser(this.props.history);
+    this.props.getPins();
+    this.props.getBoards();
   }
 
   signUpHandler = (user) => {
@@ -117,5 +120,7 @@ export default withRouter(
     signupUserFetch,
     loginUserFetch,
     fetchLoggedInUser,
+    getPins,
+    getBoards,
   })(App)
 );

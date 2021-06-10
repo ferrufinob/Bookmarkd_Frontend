@@ -7,6 +7,7 @@ class BoardForm extends Component {
   state = {
     name: "",
   };
+
   handleOnChange = (event) =>
     this.setState({ [event.target.name]: event.target.value });
 
@@ -74,4 +75,6 @@ const FormWrapper = styled.div`
   }
 `;
 
-export default connect(null, { addBoard })(BoardForm);
+const mapStateToProps = (state) => ({ boards: state.boards.board });
+
+export default connect(mapStateToProps, { addBoard })(BoardForm);

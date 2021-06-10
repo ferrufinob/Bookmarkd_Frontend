@@ -12,6 +12,7 @@ const boardsReducer = (state = initialState, action) => {
       return { ...state, boards: [...state.boards], loading: true };
     case "ADD_BOARD":
       return { ...state, boards: [...state.boards, action.payload] };
+    
     default:
       return state;
   }

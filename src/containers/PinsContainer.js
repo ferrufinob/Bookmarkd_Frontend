@@ -10,9 +10,12 @@ class PinsContainer extends Component {
     this.props.getPins();
   }
   searchedPins = () =>
-    this.props.pins.filter((pin) =>
-      pin.title.toLowerCase().includes(this.props.search.toLowerCase())
-    );
+    this.props.pins
+      .filter((pin) =>
+        pin.title.toLowerCase().includes(this.props.search.toLowerCase())
+      )
+      .slice()
+      .reverse();
   render() {
     const { loading } = this.props;
     return (

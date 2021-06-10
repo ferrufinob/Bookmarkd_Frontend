@@ -39,6 +39,7 @@ class NewPin extends Component {
   };
 
   render() {
+    console.log("NewPin");
     const boards = this.props.boards.map((board) => (
       <option key={board.id} value={board.id}>
         {board.name}

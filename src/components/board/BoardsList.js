@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -19,6 +20,7 @@ const BoardsList = (props) => {
         ) : null;
       });
   };
+
   return (
     <>
       <Link to={`/boards/${id}/pins`}>
@@ -28,6 +30,8 @@ const BoardsList = (props) => {
     </>
   );
 };
+
+const mapStateToProps = (state) => ({ pins: state.pins.pins });
 
 const Wrapper = styled.div`
   height: 200px;
@@ -45,4 +49,4 @@ const Wrapper = styled.div`
     float: left;
   }
 `;
-export default BoardsList;
+export default connect(mapStateToProps)(BoardsList);
