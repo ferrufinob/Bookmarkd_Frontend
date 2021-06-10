@@ -21,8 +21,6 @@ import Login from "./components/user/Login";
 import Navbar from "./components/header/NavBar";
 
 class App extends Component {
-  state = { showMenu: false };
-
   componentDidMount() {
     this.props.fetchLoggedInUser(this.props.history);
   }
@@ -40,11 +38,6 @@ class App extends Component {
     this.props.history.push("/");
   };
 
-  showMenu = (e) => {
-    e.preventDefault();
-    this.setState({ showMenu: !this.state.showMenu });
-  };
-
   render() {
     const path = this.props.location.pathname;
     const token = localStorage.getItem("token");
@@ -54,8 +47,6 @@ class App extends Component {
           user={this.props.user}
           logoutHandler={this.logoutHandler}
           path={path}
-          showMenu={this.state.showMenu}
-          showMenuHandler={this.showMenu}
         />
         <Switch>
           <Route

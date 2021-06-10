@@ -36,6 +36,7 @@ class BoardForm extends Component {
 const FormWrapper = styled.div`
   text-align: center;
   position: fixed;
+  display: block;
   border-radius: 5px;
   height: 300px;
   width: 400px;
@@ -45,7 +46,6 @@ const FormWrapper = styled.div`
   transform: translate(-50%, -50%);
   box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
   background-color: #f9f9f9;
-  z-index: 0;
   button {
     background-color: #e85a4f;
     border-radius: 10px;

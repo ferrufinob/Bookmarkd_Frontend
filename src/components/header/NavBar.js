@@ -33,16 +33,12 @@ const Navbar = (props) => {
                 </NavLink>
               </IconButton>
               <Dropdown>
-                <IconButton onClick={props.showMenuHandler}>
-                  {/* <NavLink to="/pins/new"> */}
+                <IconButton className="hover" onClick={props.showMenuHandler}>
                   <AddIcon fontSize="large" />
-                  {props.showMenu ? (
-                    <DropdownContent>
-                      <NavLink to="/pins/new">Create Pin</NavLink>
-                      <NavLink to="/boards/new">Create Board</NavLink>
-                    </DropdownContent>
-                  ) : null}
-                  {/* </NavLink> */}
+                  <DropdownContent className="dropdown-content">
+                    <NavLink to="/pins/new">Create Pin</NavLink>
+                    <NavLink to="/boards/new">Create Board</NavLink>
+                  </DropdownContent>
                 </IconButton>
               </Dropdown>
               <IconButton onClick={props.logoutHandler}>
@@ -81,6 +77,9 @@ const Wrapper = styled.div`
   padding: 12px 4px 4px 16px;
   background-color: white;
   color: black;
+  .hover:hover .dropdown-content {
+    display: block;
+  }
 `;
 
 const Logo = styled.div`
@@ -147,8 +146,7 @@ const DropdownContent = styled.div`
   position: absolute;
   background-color: #f9f9f9;
   min-width: 160px;
-  display: block;
-  margin-top: 200px;
+  margin-top: 170px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
   a {
