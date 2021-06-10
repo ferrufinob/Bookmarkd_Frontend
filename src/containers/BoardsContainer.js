@@ -11,22 +11,30 @@ class BoardsContainer extends Component {
     this.props.getPins();
   }
   render() {
-    const { boards, user } = this.props;
+    const { boards, user, loading } = this.props;
     return (
       <>
-        {user ? (
-          <UserInfo>
-            <AccountCircleIcon fontSize="large" />
-            {user.username}
-          </UserInfo>
-        ) : null}
-        <BoardWrapper>
-          {boards.map((board) =>
-            board ? (
-              <BoardsList key={board.id} {...board} pins={this.props.pins} />
-            ) : null
-          )}
-        </BoardWrapper>
+        {!loading ? (
+          <>
+            <UserInfo>
+              <AccountCircleIcon fontSize="large" />
+              {user.username}
+            </UserInfo>
+            <BoardWrapper>
+              {boards.map((board) =>
+                board ? (
+                  <BoardsList
+                    key={board.id}
+                    {...board}
+                    pins={this.props.pins}
+                  />
+                ) : null
+              )}
+            </BoardWrapper>
+          </>
+        ) : (
+          <h1>Loading Boards</h1>
+        )}
       </>
     );
   }
@@ -35,6 +43,7 @@ class BoardsContainer extends Component {
 const mapStateToProps = (state) => ({
   boards: state.boards.boards,
   pins: state.pins.pins,
+  loading: state.loading,
 });
 
 const BoardWrapper = styled.div`

@@ -2,7 +2,6 @@ const initialState = {
   pins: [],
   selectedPin: null,
   loading: true,
-  errorMessage: "",
   filters: {
     search: "",
   },

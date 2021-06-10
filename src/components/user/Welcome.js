@@ -19,12 +19,6 @@ const WelcomeWrapper = styled.div`
   background-size: cover;
   justify-content: center;
   z-index: 0;
-
-  img {
-    max-width: 100%;
-    height: 100%;
-    position: absolute;
-  }
 `;
 
 const Header = styled.h1`

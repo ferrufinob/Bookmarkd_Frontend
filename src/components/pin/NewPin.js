@@ -4,6 +4,7 @@ import { addPin } from "../../redux/actions/pinsActions";
 import styled from "styled-components";
 import InsertPhotoIcon from "@material-ui/icons/InsertPhoto";
 import IconButton from "@material-ui/core/IconButton";
+import { getBoards } from "../../redux/actions/boardsActions";
 
 class NewPin extends Component {
   state = {
@@ -13,6 +14,10 @@ class NewPin extends Component {
     site_url: "",
     board: "",
   };
+
+  componentDidMount() {
+    this.props.getBoards();
+  }
 
   handleOnChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
@@ -62,6 +67,7 @@ class NewPin extends Component {
             </ImageWrapper>
             <InfoWrapper>
               <input
+                required
                 type="text"
                 name="board"
                 placeholder="Create Board"
@@ -71,7 +77,6 @@ class NewPin extends Component {
               />
               <select
                 name="board"
-                required
                 value={this.state.board}
                 onChange={this.handleOnChange}
               >
@@ -86,7 +91,7 @@ class NewPin extends Component {
                 onChange={this.handleOnChange}
                 className="title"
               />
-              <input
+              <textarea
                 type="text"
                 required
                 name="description"
@@ -94,7 +99,16 @@ class NewPin extends Component {
                 value={this.state.description}
                 onChange={this.handleOnChange}
                 className="description"
-              />
+              ></textarea>
+              {/* <input
+                type="text"
+                required
+                name="description"
+                placeholder="Tell everyone what your Pin is about"
+                value={this.state.description}
+                onChange={this.handleOnChange}
+                className="description"
+              /> */}
               <input
                 type="text"
                 required
@@ -112,9 +126,11 @@ class NewPin extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => ({ boards: state.boards.boards });
+
 const Wrapper = styled.div`
   display: flex;
-  /* overflow: hidden; */
 `;
 
 const FormWrapper = styled.div`
@@ -163,4 +179,4 @@ const InfoWrapper = styled.div`
   width: 440px;
   height: 600px;
 `;
-export default connect(null, { addPin })(NewPin);
+export default connect(mapStateToProps, { addPin, getBoards })(NewPin);

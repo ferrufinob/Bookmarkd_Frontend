@@ -26,6 +26,7 @@ class Signup extends Component {
             <Header>Welcome to Bookmarkd</Header>
             <input
               type="text"
+              required
               name="username"
               value={this.state.username}
               placeholder="Username"
@@ -33,6 +34,7 @@ class Signup extends Component {
             />
             <input
               type="text"
+              required
               name="email"
               placeholder="Email"
               value={this.state.email}
@@ -40,6 +42,7 @@ class Signup extends Component {
             />
             <input
               type="password"
+              required
               name="password"
               value={this.state.password}
               placeholder="password"

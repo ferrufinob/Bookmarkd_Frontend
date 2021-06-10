@@ -24,7 +24,7 @@ class PinsContainer extends Component {
             )}
           </>
         ) : (
-          <h1>LOADING PINS :</h1>
+          <h1>Loading Boards</h1>
         )}
       </Column>
     );

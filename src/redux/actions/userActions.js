@@ -18,9 +18,10 @@ export const loginUserFetch = (userInfo, history) => {
           dispatch(GET_USER(user.user));
           history.push("/pins");
         } else {
-          alert(user.error);
+          console.log(user.error);
         }
-      });
+      })
+      .catch(console.log);
   };
 };
 
@@ -38,12 +39,12 @@ export const signupUserFetch = (userInfo, history) => {
         if (!user.error) {
           localStorage.setItem("token", user.jwt);
           dispatch(GET_USER(user.user));
-
           history.push("/pins");
         } else {
-          alert(user.error);
+          console.log(user.error);
         }
-      });
+      })
+      .catch(console.log);
   };
 };
 

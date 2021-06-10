@@ -27,6 +27,7 @@ class Login extends Component {
           <form onSubmit={this.handleOnSubmit}>
             <input
               type="text"
+              required
               name="email"
               value={this.state.email}
               placeholder="Email"
@@ -34,6 +35,7 @@ class Login extends Component {
             />
             <input
               type="password"
+              required
               name="password"
               value={this.state.password}
               placeholder="Password"

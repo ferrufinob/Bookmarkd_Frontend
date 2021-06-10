@@ -47,7 +47,7 @@ const Navbar = (props) => {
           <Wrapper>
             <IconButton>
               <Logo>
-                <BookmarkBorderIcon fontSize="medium" />
+                <BookmarkBorderIcon fontSize="large" />
                 Bookmarkd
               </Logo>
             </IconButton>

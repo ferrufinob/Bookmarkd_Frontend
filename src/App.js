@@ -7,7 +7,7 @@ import {
   loginUserFetch,
   fetchLoggedInUser,
 } from "./redux/actions/userActions";
-import { getBoards } from "./redux/actions/boardsActions";
+// import { getBoards } from "./redux/actions/boardsActions";
 
 import PinsContainer from "./containers/PinsContainer";
 import BoardsContainer from "./containers/BoardsContainer";
@@ -22,7 +22,6 @@ import NewPin from "./components/pin/NewPin";
 class App extends Component {
   componentDidMount() {
     this.props.fetchLoggedInUser(this.props.history);
-    this.props.getBoards();
   }
 
   signUpHandler = (user) => {
@@ -82,9 +81,7 @@ class App extends Component {
           />
           <Route
             path="/pins/new"
-            render={(routerProps) => (
-              <NewPin boards={this.props.boards} {...routerProps} />
-            )}
+            render={(routerProps) => <NewPin {...routerProps} />}
           />
           <Route
             path="/pins/:id"
@@ -108,7 +105,6 @@ class App extends Component {
 
 const mapStateToProps = (state) => ({
   user: state.user,
-  boards: state.boards.boards,
 });
 
 export default withRouter(
@@ -116,6 +112,5 @@ export default withRouter(
     signupUserFetch,
     loginUserFetch,
     fetchLoggedInUser,
-    getBoards,
   })(App)
 );
