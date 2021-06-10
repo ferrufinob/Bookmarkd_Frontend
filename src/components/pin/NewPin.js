@@ -44,7 +44,6 @@ class NewPin extends Component {
         {board.name}
       </option>
     ));
-    console.log(this.state.board_id);
     return (
       <FormWrapper>
         <form onSubmit={this.handleOnSubmit}>
@@ -92,15 +91,6 @@ class NewPin extends Component {
                 onChange={this.handleOnChange}
                 className="description"
               ></textarea>
-              {/* <input
-                type="text"
-                required
-                name="description"
-                placeholder="Tell everyone what your Pin is about"
-                value={this.state.description}
-                onChange={this.handleOnChange}
-                className="description"
-              /> */}
               <input
                 type="text"
                 required
@@ -152,6 +142,10 @@ const FormWrapper = styled.div`
   }
   button:hover {
     background-color: #e98074;
+  }
+
+  textarea {
+    resize: none;
   }
 `;
 
