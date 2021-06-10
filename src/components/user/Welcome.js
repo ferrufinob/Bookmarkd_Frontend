@@ -6,7 +6,7 @@ const Welcome = () => {
     <>
       <Header>Find and save new ideas to try.</Header>
       <WelcomeWrapper className="welcome-div">
-        <img src="WelcomeCollage.jpeg" />
+        <img src="WelcomeCollage.jpeg" alt="Welcome Collage" />
       </WelcomeWrapper>
     </>
   );

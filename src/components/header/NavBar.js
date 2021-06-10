@@ -10,6 +10,7 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 const Navbar = (props) => {
   const { user } = props;
+
   return (
     <>
       {user && localStorage.getItem("token") ? (
@@ -31,11 +32,19 @@ const Navbar = (props) => {
                   <FaceIcon fontSize="large" />
                 </NavLink>
               </IconButton>
-              <IconButton>
-                <NavLink to="/pins/new">
+              <Dropdown>
+                <IconButton onClick={props.showMenuHandler}>
+                  {/* <NavLink to="/pins/new"> */}
                   <AddIcon fontSize="large" />
-                </NavLink>
-              </IconButton>
+                  {props.showMenu ? (
+                    <DropdownContent>
+                      <NavLink to="/pins/new">Create Pin</NavLink>
+                      <NavLink to="/boards/new">Create Board</NavLink>
+                    </DropdownContent>
+                  ) : null}
+                  {/* </NavLink> */}
+                </IconButton>
+              </Dropdown>
               <IconButton onClick={props.logoutHandler}>
                 <ExitToAppIcon fontSize="large" />
               </IconButton>
@@ -131,5 +140,26 @@ const SignupButton = styled.button`
   :hover {
     background-color: #8e8d8a;
   }
+`;
+
+const DropdownContent = styled.div`
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  display: block;
+  margin-top: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  a {
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+`;
+
+const Dropdown = styled.div`
+  position: relative;
+  display: inline-block;
 `;
 export default Navbar;

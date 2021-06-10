@@ -12,14 +12,17 @@ import {
 import PinsContainer from "./containers/PinsContainer";
 import BoardsContainer from "./containers/BoardsContainer";
 import BoardDisplay from "./components/board/BoardDisplay";
+import BoardForm from "./components/board/BoardForm";
 import PinDisplay from "./components/pin/PinDisplay";
+import NewPin from "./components/pin/NewPin";
 import Welcome from "./components/user/Welcome";
 import Signup from "./components/user/Signup";
 import Login from "./components/user/Login";
 import Navbar from "./components/header/NavBar";
-import NewPin from "./components/pin/NewPin";
 
 class App extends Component {
+  state = { showMenu: false };
+
   componentDidMount() {
     this.props.fetchLoggedInUser(this.props.history);
   }
@@ -37,6 +40,11 @@ class App extends Component {
     this.props.history.push("/");
   };
 
+  showMenu = (e) => {
+    e.preventDefault();
+    this.setState({ showMenu: !this.state.showMenu });
+  };
+
   render() {
     const path = this.props.location.pathname;
     const token = localStorage.getItem("token");
@@ -46,6 +54,8 @@ class App extends Component {
           user={this.props.user}
           logoutHandler={this.logoutHandler}
           path={path}
+          showMenu={this.state.showMenu}
+          showMenuHandler={this.showMenu}
         />
         <Switch>
           <Route
@@ -90,6 +100,10 @@ class App extends Component {
             )}
           />
           <Route path="/pins" component={PinsContainer} />
+          <Route
+            path="/boards/new"
+            render={(routerProps) => <BoardForm {...routerProps} />}
+          />
           <Route path="/boards/:id/pins" component={BoardDisplay} />
           <Route
             path="/boards"
