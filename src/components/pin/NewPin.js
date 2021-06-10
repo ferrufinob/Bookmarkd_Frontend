@@ -12,7 +12,7 @@ class NewPin extends Component {
     description: "",
     image: null,
     site_url: "",
-    board: "",
+    board_id: "",
   };
 
   componentDidMount() {
@@ -29,7 +29,7 @@ class NewPin extends Component {
     formData.append("title", this.state.title);
     formData.append("description", this.state.description);
     formData.append("site_url", this.state.site_url);
-    formData.append("board", this.state.board);
+    formData.append("board_id", this.state.board_id);
     formData.append("image", this.state.image);
     this.props.addPin(formData, this.props.history);
   };
@@ -40,10 +40,11 @@ class NewPin extends Component {
 
   render() {
     const boards = this.props.boards.map((board) => (
-      <option key={board.id} value={board.name}>
+      <option key={board.id} value={board.id}>
         {board.name}
       </option>
     ));
+    console.log(this.state.board_id);
     return (
       <FormWrapper>
         <form onSubmit={this.handleOnSubmit}>
@@ -66,18 +67,9 @@ class NewPin extends Component {
               </label>
             </ImageWrapper>
             <InfoWrapper>
-              <input
-                required
-                type="text"
-                name="board"
-                placeholder="Create Board"
-                value={this.state.board}
-                onChange={this.handleOnChange}
-                className="create-board"
-              />
               <select
-                name="board"
-                value={this.state.board}
+                name="board_id"
+                value={this.state.board_id}
                 onChange={this.handleOnChange}
               >
                 <option value=""> Select Board&hellip;</option>

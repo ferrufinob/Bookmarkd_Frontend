@@ -28,15 +28,21 @@ export const addBoard = (boardData, history) => {
     let configObj = {
       method: "POST",
       headers: {
+        "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(boardData),
     };
-    fetch(API + "/board", configObj)
+    fetch(API + "/boards", configObj)
       .then((res) => res.json())
       .then((board) => {
-        debugger;
-        console.log(board);
-      });
+        if (board.error) {
+          console.log(board.error);
+        } else {
+          dispatch(ADD_BOARD(board));
+          history.push(`/boards/${board.board.id}/pins`);
+        }
+      })
+      .catch(console.log);
   };
 };
