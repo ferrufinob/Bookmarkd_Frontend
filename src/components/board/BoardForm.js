@@ -16,7 +16,6 @@ class BoardForm extends Component {
     this.props.addBoard(this.state, this.props.history);
   };
   render() {
-    console.log(this.state);
     return (
       <form onSubmit={this.handleSubmit}>
         <FormWrapper>
@@ -75,6 +74,4 @@ const FormWrapper = styled.div`
   }
 `;
 
-const mapStateToProps = (state) => ({ boards: state.boards.board });
-
-export default connect(mapStateToProps, { addBoard })(BoardForm);
+export default connect(null, { addBoard })(BoardForm);

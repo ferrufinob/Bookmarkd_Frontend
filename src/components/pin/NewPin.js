@@ -7,6 +7,10 @@ import IconButton from "@material-ui/core/IconButton";
 import { getBoards } from "../../redux/actions/boardsActions";
 
 class NewPin extends Component {
+  componentDidMount() {
+    this.props.getBoards();
+  }
+
   state = {
     title: "",
     description: "",
@@ -14,10 +18,6 @@ class NewPin extends Component {
     site_url: "",
     board_id: "",
   };
-
-  componentDidMount() {
-    this.props.getBoards();
-  }
 
   handleOnChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });

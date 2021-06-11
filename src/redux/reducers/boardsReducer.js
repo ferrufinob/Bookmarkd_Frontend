@@ -3,7 +3,6 @@ const initialState = {
   loading: true,
 };
 
-// Add Loading
 const boardsReducer = (state = initialState, action) => {
   switch (action.type) {
     case "GET_BOARDS":
@@ -11,8 +10,8 @@ const boardsReducer = (state = initialState, action) => {
     case "LOADING_BOARDS":
       return { ...state, boards: [...state.boards], loading: true };
     case "ADD_BOARD":
-      return { ...state, boards: [...state.boards, action.payload] };
-    
+      return { ...state, boards: [...state.boards, action.payload.board] };
+
     default:
       return state;
   }

@@ -10,7 +10,6 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 const Navbar = (props) => {
   const { user } = props;
-  console.log("Navbar");
   return (
     <>
       {user && localStorage.getItem("token") ? (
@@ -33,7 +32,7 @@ const Navbar = (props) => {
                 </NavLink>
               </IconButton>
               <Dropdown>
-                <IconButton className="hover" onClick={props.showMenuHandler}>
+                <IconButton className="hover">
                   <AddIcon fontSize="large" />
                   <DropdownContent className="dropdown-content">
                     <NavLink to="/pins/new">Create Pin</NavLink>

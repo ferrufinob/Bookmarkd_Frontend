@@ -2,13 +2,9 @@ import React from "react";
 import { Component } from "react";
 import { connect } from "react-redux";
 import PinsList from "../components/pin/PinsList";
-import { getPins } from "../redux/actions/pinsActions";
 import { Column } from "../components/pin/Pin-Styling";
 
 class PinsContainer extends Component {
-  componentDidMount() {
-    this.props.getPins();
-  }
   searchedPins = () =>
     this.props.pins
       .filter((pin) =>
@@ -27,7 +23,7 @@ class PinsContainer extends Component {
             )}
           </>
         ) : (
-          <h1>Loading Boards</h1>
+          <h1>Loading Pins</h1>
         )}
       </Column>
     );
@@ -40,4 +36,4 @@ const mapStateToProps = (state) => ({
   ...state.pins.filters,
 });
 
-export default connect(mapStateToProps, { getPins })(PinsContainer);
+export default connect(mapStateToProps)(PinsContainer);

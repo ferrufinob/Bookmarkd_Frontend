@@ -8,8 +8,6 @@ import {
   fetchLoggedInUser,
 } from "./redux/actions/userActions";
 import { getPins } from "./redux/actions/pinsActions";
-import { getBoards } from "./redux/actions/boardsActions";
-
 import PinsContainer from "./containers/PinsContainer";
 import BoardsContainer from "./containers/BoardsContainer";
 import BoardDisplay from "./components/board/BoardDisplay";
@@ -25,7 +23,6 @@ class App extends Component {
   componentDidMount() {
     this.props.fetchLoggedInUser(this.props.history);
     this.props.getPins();
-    this.props.getBoards();
   }
 
   signUpHandler = (user) => {
@@ -38,12 +35,13 @@ class App extends Component {
 
   logoutHandler = () => {
     localStorage.removeItem("token");
-    this.props.history.push("/");
+    this.props.history.push("/login");
   };
 
   render() {
     const path = this.props.location.pathname;
     const token = localStorage.getItem("token");
+
     return (
       <>
         <Navbar
@@ -98,7 +96,10 @@ class App extends Component {
             path="/boards/new"
             render={(routerProps) => <BoardForm {...routerProps} />}
           />
-          <Route path="/boards/:id/pins" component={BoardDisplay} />
+          <Route
+            path="/boards/:id/pins"
+            render={(routerProps) => <BoardDisplay {...routerProps} />}
+          />
           <Route
             path="/boards"
             render={() => (
@@ -121,6 +122,5 @@ export default withRouter(
     loginUserFetch,
     fetchLoggedInUser,
     getPins,
-    getBoards,
   })(App)
 );

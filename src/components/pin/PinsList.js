@@ -4,7 +4,6 @@ import { Wrapper } from "./Pin-Styling";
 
 const PinsList = (props) => {
   const { title, image, id } = props;
-  console.log("PinsList");
   return (
     <Wrapper>
       <Link to={`/pins/${id}`}>

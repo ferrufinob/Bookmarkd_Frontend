@@ -1,31 +1,26 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-// import { getBoards } from "../redux/actions/boardsActions";
-// import { unsetPins } from "../redux/actions/pinsActions";
+import { getBoards } from "../redux/actions/boardsActions";
 import BoardsList from "../components/board/BoardsList";
 import styled from "styled-components";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 class BoardsContainer extends Component {
-  // componentDidMount() {
-  //   this.props.getBoards();
-  //   // this.props.getPins();
-  // }
-
-  // componentWillUnmount() {
-  //   this.props.unsetPins();
-  // }
+  componentDidMount() {
+    this.props.getBoards();
+  }
   render() {
-    const { boards, user, loading } = this.props;
+    const { user, loading } = this.props;
+
     return (
       <>
         {!loading ? (
           <>
             <UserInfo>
               <AccountCircleIcon fontSize="large" />
-              {user.username}
+              {user ? <>{user.username}</> : null}
             </UserInfo>
             <BoardWrapper>
-              {boards.map((board) =>
+              {this.props.boards.map((board) =>
                 board ? <BoardsList key={board.id} {...board} /> : null
               )}
             </BoardWrapper>
@@ -65,4 +60,4 @@ const UserInfo = styled.h1`
   text-align: center;
   margin-top: 100px;
 `;
-export default connect(mapStateToProps)(BoardsContainer);
+export default connect(mapStateToProps, { getBoards })(BoardsContainer);

@@ -5,7 +5,6 @@ import styled from "styled-components";
 
 const BoardsList = (props) => {
   const { name, id } = props;
-  console.log("BoardList");
   const boardPinImages = () => {
     return props.pins
       .filter((pin) => {
