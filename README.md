@@ -55,7 +55,7 @@ Bookmarkd was built in two weeks, and more features are to come.
 - Likes: User can like other users pins
 - Comments: Users can leave comments on pins
 - Friends: User can follow other users and be followed back
-- Full CRUD for pins and boards
+- Image preview when creating a new pin
 
 ## Contributing
 
