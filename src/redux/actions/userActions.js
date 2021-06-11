@@ -4,6 +4,7 @@ export const GET_USER = (user) => ({ type: "GET_USER", payload: user });
 
 export const loginUserFetch = (userInfo, history) => {
   return (dispatch) => {
+    dispatch({ type: "GETTING_USER" });
     fetch(API + "/login", {
       method: "POST",
       headers: {
@@ -27,6 +28,7 @@ export const loginUserFetch = (userInfo, history) => {
 
 export const signupUserFetch = (userInfo, history) => {
   return (dispatch) => {
+    dispatch({ type: "GETTING_USER" });
     fetch(API + "/users", {
       method: "POST",
       headers: {
@@ -50,6 +52,7 @@ export const signupUserFetch = (userInfo, history) => {
 
 export const fetchLoggedInUser = (history) => {
   return (dispatch) => {
+    dispatch({ type: "GETTING_USER" });
     const token = localStorage.getItem("token");
     if (token) {
       return fetch(API + "/autologin", {

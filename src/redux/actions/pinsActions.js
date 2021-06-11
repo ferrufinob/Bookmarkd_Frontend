@@ -35,10 +35,10 @@ export const setSelectedPin = (id) => {
 export const addPin = (pinData, history) => {
   const token = localStorage.getItem("token");
   return (dispatch) => {
+    dispatch({ type: "ADDING_PIN" });
     let configObj = {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
       body: pinData,

@@ -25,6 +25,7 @@ export const getBoards = () => {
 export const addBoard = (boardData, history) => {
   const token = localStorage.getItem("token");
   return (dispatch) => {
+    dispatch({ type: "ADDING_BOARD" });
     let configObj = {
       method: "POST",
       headers: {

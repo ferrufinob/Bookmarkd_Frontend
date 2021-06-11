@@ -30,6 +30,9 @@ const pinsReducer = (state = initialState, action) => {
     case "LOADING_PINS":
       return { ...state, pins: [...state.pins], loading: true };
 
+    case "ADDING_PIN":
+      return { ...state, pins: [...state.pins], loading: true };
+
     case "SEARCH_FORM_CHANGE":
       return {
         ...state,
