@@ -2,7 +2,9 @@
 
 Bookmarkd is a Pinterest inspired picture sharing application. Bookmarkd allows users to create pins, create boards, and search through other users pins.
 
-[Backend Repo](https://github.com/ferrufinob/Bookmarkd_Backend.git)
+[Backend Repo](https://github.com/ferrufinob/Bookmarkd_Backend.git) |
+[Blog](https://brenda-ferrufino.medium.com/react-redux-project-9a7f6a215ee8) |
+[Demo Video](https://youtu.be/Sfp5V6rF3bw)
 
 ![app](BookmarkdGiphy.gif)
 
