@@ -42,3 +42,9 @@
     - user = user
     - current_user = session_user
     - pins = user.pins
+
+Practice
+
+- adding like button to pins and displaying those likes by most to least liked
+- displaying boards in alphabetical order
+- adding counter

@@ -37,10 +37,10 @@ export const addBoard = (boardData, history) => {
       .then((res) => res.json())
       .then((board) => {
         if (board.error) {
-          console.log(board.error);
+          alert(board.error);
         } else {
           dispatch(ADD_BOARD(board));
-          history.push(`/boards/${board.board.id}/pins`);
+          history.push("/boards");
         }
       })
       .catch(console.log);

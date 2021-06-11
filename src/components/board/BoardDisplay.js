@@ -33,7 +33,6 @@ class BoardDisplay extends Component {
   }
 }
 
-// display something if no pins exist yet.
 const mapStateToProps = (state) => ({
   pins: state.pins.pins,
   boards: state.boards.boards,

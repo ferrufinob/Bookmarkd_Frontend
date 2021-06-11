@@ -23,6 +23,7 @@ class BoardForm extends Component {
           <input
             type="text"
             name="name"
+            required
             value={this.state.name}
             onChange={this.handleOnChange}
           />
