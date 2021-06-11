@@ -68,6 +68,7 @@ class NewPin extends Component {
             <InfoWrapper>
               <select
                 name="board_id"
+                required
                 value={this.state.board_id}
                 onChange={this.handleOnChange}
               >
@@ -77,6 +78,7 @@ class NewPin extends Component {
               <input
                 type="text"
                 name="title"
+                required
                 placeholder="Add your title"
                 value={this.state.title}
                 onChange={this.handleOnChange}

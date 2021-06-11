@@ -19,7 +19,11 @@ const pinsReducer = (state = initialState, action) => {
       };
 
     case "ADD_PIN":
-      return { ...state, pins: [...state.pins, action.payload.pin] };
+      return {
+        ...state,
+        pins: [...state.pins, action.payload.pin],
+        loading: false,
+      };
 
     case "UNSET_PIN":
       return { ...state, selectedPin: null };
