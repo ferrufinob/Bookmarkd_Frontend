@@ -8,6 +8,11 @@ Bookmarkd is a Pinterest inspired picture sharing application. Bookmarkd allows 
 
 ![app](BookmarkdGiphy.gif)
 
+<details>
+ <summary>wireframe</summary>
+<img src="wireframe.png">
+</details>
+
 ## Current Features
 
 - Single Page App(SPA)
