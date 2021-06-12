@@ -7,8 +7,8 @@ const userReducer = (state = initialState, action) => {
     case "GET_USER":
       return { ...state, currentUser: action.payload };
     case "GETTING_USER":
-      return{...state, currentUser: [...state.currentUser]}
-      default:
+      return { ...state };
+    default:
       return state;
   }
 };
