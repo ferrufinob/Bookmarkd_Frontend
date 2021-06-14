@@ -25,7 +25,7 @@ export const getPins = () => {
 
 export const setSelectedPin = (id) => {
   return (dispatch) => {
-    dispatch({ type: "LOADING_PIN" });
+    dispatch({ type: "LOADING_SELECTED_PIN" });
     fetch(API + "/pins/" + id)
       .then((res) => res.json())
       .then((pin) => dispatch(SET_SELECTED_PIN(pin)));
