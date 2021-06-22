@@ -6,7 +6,9 @@ const PinBody = (props) => {
   const { site_url, title, description, userName } = props;
   return (
     <>
-      <a href={site_url}>{site_url}</a>
+      <a href={site_url} target="_blank">
+        {site_url}
+      </a>
       <PinInfo>
         <h1>{title}</h1>
         <p>{description}</p>
