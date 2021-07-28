@@ -4,11 +4,20 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import styled from "styled-components";
 
 const PinBody = (props) => {
-  const { id, site_url, title, description, userName, handleDelete, user } =
-    props;
+  const {
+    user_id,
+    id,
+    site_url,
+    title,
+    description,
+    userName,
+    handleDelete,
+    user,
+  } = props;
+  console.log(props);
   return (
     <>
-      {user === userName ? (
+      {user.id === user_id ? (
         <DeleteButton>
           <DeleteIcon onClick={() => handleDelete(id)}>X</DeleteIcon>
         </DeleteButton>
