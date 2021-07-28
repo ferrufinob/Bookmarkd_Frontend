@@ -44,6 +44,17 @@ const pinsReducer = (state = initialState, action) => {
           [action.payload.name]: action.payload.value,
         },
       };
+
+    case "DELETING_PIN":
+      return { ...state, loading: true };
+
+    case "DELETE_PIN":
+      return {
+        ...state,
+        pins: [...state.pins.filter((pin) => pin.id !== action.payload)],
+        loading: false,
+      };
+
     default:
       return state;
   }

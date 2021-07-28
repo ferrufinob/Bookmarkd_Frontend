@@ -1,6 +1,10 @@
 import { Component } from "react";
 import { connect } from "react-redux";
-import { setSelectedPin, unsetPin } from "../../redux/actions/pinsActions";
+import {
+  setSelectedPin,
+  unsetPin,
+  deletePin,
+} from "../../redux/actions/pinsActions";
 import styled from "styled-components";
 
 import PinImage from "./PinImage";
@@ -15,6 +19,10 @@ class PinDisplay extends Component {
     this.props.unsetPin();
   }
 
+  handleDelete = (id) => {
+    this.props.deletePin(id, this.props.history);
+  };
+
   render() {
     const { title, image, loading } = this.props;
     return (
@@ -25,7 +33,7 @@ class PinDisplay extends Component {
               <PinImage image={image} title={title} />
             </Child>
             <Child>
-              <PinBody {...this.props} />
+              <PinBody handleDelete={this.handleDelete} {...this.props} />
             </Child>
           </Wrapper>
         ) : (
@@ -68,6 +76,8 @@ const Child = styled.section`
   line-height: 1.5;
 `;
 
-export default connect(mapStateToProps, { setSelectedPin, unsetPin })(
-  PinDisplay
-);
+export default connect(mapStateToProps, {
+  setSelectedPin,
+  unsetPin,
+  deletePin,
+})(PinDisplay);

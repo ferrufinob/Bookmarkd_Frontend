@@ -6,6 +6,7 @@ export const SET_SELECTED_PIN = (id) => ({
   payload: id,
 });
 export const ADD_PIN = (pin) => ({ type: "ADD_PIN", payload: pin });
+export const DELETE_PIN = (pin) => ({ type: "DELETE_PIN", payload: pin });
 
 export const getPins = () => {
   return (dispatch) => {
@@ -63,3 +64,29 @@ export const handleSearchFormChange = (e) => ({
   type: "SEARCH_FORM_CHANGE",
   payload: { name: e.target.name, value: e.target.value },
 });
+
+export const deletePin = (id, history) => {
+  // const token = localStorage.getItem("token");
+  return (dispatch) => {
+    dispatch({ type: "DELETING_PIN" });
+    let configObj = {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        // Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(id),
+    };
+    fetch(API + "/pins/" + id, configObj)
+      .then((resp) => resp.json())
+      .then((pin) => {
+        if (pin.error) {
+          console.log(pin.error);
+        } else {
+          dispatch(DELETE_PIN(id));
+          history.push("/boards");
+        }
+      });
+  };
+};
