@@ -14,12 +14,18 @@ const PinBody = (props) => {
     handleDelete,
     user,
   } = props;
-  console.log(props);
+
   return (
     <>
       {user.id === user_id ? (
         <DeleteButton>
-          <DeleteIcon onClick={() => handleDelete(id)}>X</DeleteIcon>
+          <DeleteIcon
+            onClick={() => {
+              if (window.confirm("Are you sure?")) handleDelete(id);
+            }}
+          >
+            X
+          </DeleteIcon>
         </DeleteButton>
       ) : null}
       <PinInfo>

@@ -35,7 +35,7 @@ class NewPin extends Component {
   };
 
   onImageChange = (event) => {
-    this.setState({ image: event.target.files[0] });
+    this.setState({ image: URL.createObjectURL(event.target.files[0]) });
   };
 
   render() {
@@ -58,6 +58,7 @@ class NewPin extends Component {
                 id="icon-button-file"
                 style={{ display: "none" }}
               />
+
               <label htmlFor="icon-button-file">
                 <IconButton component="span">
                   <InsertPhotoIcon fontSize="large" />
