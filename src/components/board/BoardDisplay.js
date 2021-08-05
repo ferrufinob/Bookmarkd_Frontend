@@ -1,7 +1,7 @@
-import styled from "styled-components";
 import React from "react";
 import { Component } from "react";
 import { connect } from "react-redux";
+import styled from "styled-components";
 import { Column } from "../pin/Pin-Styling";
 import PinsList from "../pin/PinsList";
 class BoardDisplay extends Component {

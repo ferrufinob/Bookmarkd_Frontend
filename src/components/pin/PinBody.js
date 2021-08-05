@@ -1,7 +1,7 @@
 import React from "react";
+import styled from "styled-components";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import DeleteIcon from "@material-ui/icons/Delete";
-import styled from "styled-components";
 
 const PinBody = (props) => {
   const {

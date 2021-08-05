@@ -1,11 +1,11 @@
 import { Component } from "react";
 import { connect } from "react-redux";
+import styled from "styled-components";
 import {
   setSelectedPin,
   unsetPin,
   deletePin,
 } from "../../redux/actions/pinsActions";
-import styled from "styled-components";
 
 import PinImage from "./PinImage";
 import PinBody from "./PinBody";
@@ -56,6 +56,7 @@ const Wrapper = styled.section`
   width: 80%;
   margin: 50px auto;
   border-radius: 20px;
+
   img {
     max-width: 100%;
     max-height: 100%;
@@ -64,6 +65,7 @@ const Wrapper = styled.section`
   a {
     color: #444;
     font-size: 18px;
+    display: inline-block;
   }
   @media (min-width: 768px) {
     display: flex;

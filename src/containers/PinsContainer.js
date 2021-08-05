@@ -12,6 +12,7 @@ class PinsContainer extends Component {
       )
       .slice()
       .reverse();
+
   render() {
     const { loading } = this.props;
     return (

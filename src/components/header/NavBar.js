@@ -1,12 +1,12 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import { NavLink } from "react-router-dom";
-import SearchBar from "./SearchBar";
 import IconButton from "@material-ui/core/IconButton";
 import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
 import FaceIcon from "@material-ui/icons/Face";
 import AddIcon from "@material-ui/icons/Add";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import SearchBar from "./SearchBar";
 
 const Navbar = (props) => {
   const { user } = props;

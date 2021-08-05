@@ -1,9 +1,10 @@
 import React from "react";
+import { connect } from "react-redux";
 import styled from "styled-components";
 import SearchIcon from "@material-ui/icons/Search";
 import IconButton from "@material-ui/core/IconButton";
-import { connect } from "react-redux";
 import { handleSearchFormChange } from "../../redux/actions/pinsActions";
+
 const SearchBar = (props) => {
   const handleSubmit = (e) => e.preventDefault();
   return (

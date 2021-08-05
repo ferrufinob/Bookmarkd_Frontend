@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { addPin } from "../../redux/actions/pinsActions";
 import styled from "styled-components";
 import InsertPhotoIcon from "@material-ui/icons/InsertPhoto";
 import IconButton from "@material-ui/core/IconButton";
 import { getBoards } from "../../redux/actions/boardsActions";
+import { addPin } from "../../redux/actions/pinsActions";
 
 class NewPin extends Component {
   componentDidMount() {
