@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
-import { getBoards } from "../redux/actions/boardsActions";
+// import { getBoards } from "../redux/actions/boardsActions";
 import BoardsList from "../components/board/BoardsList";
 class BoardsContainer extends Component {
-  componentDidMount() {
-    this.props.getBoards();
-  }
+  // componentDidMount() {
+  //   this.props.getBoards();
+  // }
   render() {
     const { user, loading } = this.props;
 
@@ -60,4 +60,4 @@ const UserInfo = styled.h1`
   text-align: center;
   margin-top: 100px;
 `;
-export default connect(mapStateToProps, { getBoards })(BoardsContainer);
+export default connect(mapStateToProps)(BoardsContainer);

@@ -3,13 +3,13 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import InsertPhotoIcon from "@material-ui/icons/InsertPhoto";
 import IconButton from "@material-ui/core/IconButton";
-import { getBoards } from "../../redux/actions/boardsActions";
+// import { getBoards } from "../../redux/actions/boardsActions";
 import { addPin } from "../../redux/actions/pinsActions";
 
 class NewPin extends Component {
-  componentDidMount() {
-    this.props.getBoards();
-  }
+  // componentDidMount() {
+  //   this.props.getBoards();
+  // }
 
   state = {
     title: "",
@@ -168,4 +168,4 @@ const InfoWrapper = styled.div`
   width: 440px;
   height: 600px;
 `;
-export default connect(mapStateToProps, { addPin, getBoards })(NewPin);
+export default connect(mapStateToProps, { addPin })(NewPin);
