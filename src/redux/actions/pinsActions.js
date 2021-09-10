@@ -1,25 +1,16 @@
 const API = "http://localhost:3000/api/v1";
 
-export const FETCH_PINS_SUCCESS = (pins) => ({
-  type: "FETCH_PINS_SUCCESS",
-  payload: pins,
-});
-export const SET_SELECTED_PIN_SUCCESS = (id) => ({
-  type: "SET_SELECTED_PIN_SUCCESS",
+export const GET_PINS = (pins) => ({ type: "GET_PINS", payload: pins });
+export const SET_SELECTED_PIN = (id) => ({
+  type: "SET_SELECTED_PIN",
   payload: id,
 });
-export const ADD_PIN_SUCCESS = (pin) => ({
-  type: "ADD_PIN_SUCCESS",
-  payload: pin,
-});
-export const DELETE_PIN_SUCCESS = (pin) => ({
-  type: "DELETE_PIN_SUCCESS",
-  payload: pin,
-});
+export const ADD_PIN = (pin) => ({ type: "ADD_PIN", payload: pin });
+export const DELETE_PIN = (pin) => ({ type: "DELETE_PIN", payload: pin });
 
 export const getPins = () => {
   return (dispatch) => {
-    dispatch({ type: "FETCH_PINS_DATA" });
+    dispatch({ type: "LOADING_PINS" });
     fetch(API + "/pins")
       .then((resp) => {
         if (!resp.ok) {
@@ -28,35 +19,24 @@ export const getPins = () => {
           return resp.json();
         }
       })
-      .then((pins) => {
-        dispatch(FETCH_PINS_SUCCESS(pins));
-      })
+      .then((pins) => dispatch(GET_PINS(pins)))
       .catch((e) => console.log(e));
-    // .then((res => res.json())
-    // .then((pins) => {
-    //   if (pins.error) {
-    //     console.log(pins.error);
-    //   } else {
-    //     dispatch(GET_PINS(pins));
-    //   }
-    // })
-    // .catch(console.log);
   };
 };
 
 export const setSelectedPin = (id) => {
   return (dispatch) => {
-    dispatch({ type: "SET_SELECTED_PIN_DATA" });
+    dispatch({ type: "LOADING_SELECTED_PIN" });
     fetch(API + "/pins/" + id)
-      .then((res) => res.json())
-      .then((pin) => dispatch(SET_SELECTED_PIN_SUCCESS(pin)));
+      .then((resp) => resp.json())
+      .then((pin) => dispatch(SET_SELECTED_PIN(pin)));
   };
 };
 
 export const addPin = (pinData, history) => {
   const token = localStorage.getItem("token");
   return (dispatch) => {
-    dispatch({ type: "ADDING_PIN_DATA" });
+    dispatch({ type: "ADDING_PIN" });
     let configObj = {
       method: "POST",
       headers: {
@@ -65,16 +45,18 @@ export const addPin = (pinData, history) => {
       body: pinData,
     };
     fetch(API + "/pins", configObj)
-      .then((res) => res.json())
-      .then((pin) => {
-        if (pin.error) {
-          console.log(pin.error);
+      .then((resp) => {
+        if (!resp.ok) {
+          throw new Error(resp);
         } else {
-          dispatch(ADD_PIN_SUCCESS(pin));
-          history.push(`/pins/${pin.pin.id}`);
+          return resp.json();
         }
       })
-      .catch(console.log);
+      .then((pin) => {
+        dispatch(ADD_PIN(pin));
+        history.push(`/pins/${pin.pin.id}`);
+      })
+      .catch((e) => console.log(e));
   };
 };
 
@@ -88,7 +70,7 @@ export const handleSearchFormChange = (e) => ({
 export const deletePin = (id, history) => {
   // const token = localStorage.getItem("token");
   return (dispatch) => {
-    dispatch({ type: "DELETING_PIN_DATA" });
+    dispatch({ type: "DELETING_PIN" });
     let configObj = {
       method: "DELETE",
       headers: {
@@ -99,14 +81,17 @@ export const deletePin = (id, history) => {
       body: JSON.stringify(id),
     };
     fetch(API + "/pins/" + id, configObj)
-      .then((resp) => resp.json())
-      .then((pin) => {
-        if (pin.error) {
-          console.log(pin.error);
+      .then((resp) => {
+        if (!resp.ok) {
+          throw new Error(resp);
         } else {
-          dispatch(DELETE_PIN_SUCCESS(id));
-          history.push("/boards");
+          return resp.json();
         }
-      });
+      })
+      .then((pin) => {
+        dispatch(DELETE_PIN(id));
+        history.push("/boards");
+      })
+      .catch((e) => console.log(e));
   };
 };

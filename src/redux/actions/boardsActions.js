@@ -1,18 +1,18 @@
 const API = "http://localhost:3000/api/v1";
 
-export const FETCH_BOARD_SUCCESS = (boards) => ({
-  type: "FETCH_BOARD_SUCCESS",
+export const GET_BOARD = (boards) => ({
+  type: "GET_BOARD",
   payload: boards,
 });
-export const ADD_BOARD_SUCCESS = (board) => ({
-  type: "ADD_BOARD_SUCCESS",
+export const ADD_BOARD = (board) => ({
+  type: "ADD_BOARD",
   payload: board,
 });
 
 export const getBoards = () => {
   const token = localStorage.getItem("token");
   return (dispatch) => {
-    dispatch({ type: "FETCH_BOARD_DATA" });
+    dispatch({ type: "LOADING_BOARD" });
     if (token) {
       fetch(API + "/boards", {
         headers: {
@@ -26,7 +26,7 @@ export const getBoards = () => {
             return resp.json();
           }
         })
-        .then((boards) => dispatch(FETCH_BOARD_SUCCESS(boards)))
+        .then((boards) => dispatch(GET_BOARD(boards)))
         .catch((e) => console.log(e));
     }
   };
@@ -35,7 +35,7 @@ export const getBoards = () => {
 export const addBoard = (boardData, history) => {
   const token = localStorage.getItem("token");
   return (dispatch) => {
-    dispatch({ type: "ADDING_BOARD_DATA" });
+    dispatch({ type: "ADDING_BOARD" });
     let configObj = {
       method: "POST",
       headers: {
@@ -53,7 +53,7 @@ export const addBoard = (boardData, history) => {
         }
       })
       .then((board) => {
-        dispatch(ADD_BOARD_SUCCESS(board));
+        dispatch(ADD_BOARD(board));
         history.push("/boards");
       })
       .catch((e) => console.log(e));

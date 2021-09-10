@@ -35,7 +35,7 @@ class NewPin extends Component {
   };
 
   onImageChange = (event) => {
-    this.setState({ image: URL.createObjectURL(event.target.files[0]) });
+    this.setState({ image: event.target.files[0] });
   };
 
   render() {

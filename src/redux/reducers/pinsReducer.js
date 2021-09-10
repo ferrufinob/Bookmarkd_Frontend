@@ -9,15 +9,15 @@ const initialState = {
 
 const pinsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "FETCH_PINS_SUCCESS":
+    case "GET_PINS":
       return { ...state, pins: action.payload, loading: false };
-    case "SET_SELECTED_PIN_SUCCESS":
+    case "SET_SELECTED_PIN":
       return {
         ...state,
         selectedPin: action.payload.pin,
         loading: false,
       };
-    case "ADD_PIN_SUCCESS":
+    case "ADD_PIN":
       return {
         ...state,
         pins: [...state.pins, action.payload.pin],
@@ -27,13 +27,13 @@ const pinsReducer = (state = initialState, action) => {
     case "UNSET_PIN":
       return { ...state, selectedPin: null };
 
-    case "SET_SELECTED_PIN_DATA":
+    case "LOADING_SELECTED_PIN":
       return { ...state, selectedPin: { ...state.selectedPin }, loading: true };
 
-    case "FETCH_PINS_DATA":
+    case "LOADING_PINS":
       return { ...state, pins: [...state.pins], loading: true };
 
-    case "ADDING_PIN_DATA":
+    case "ADDING_PIN":
       return { ...state, pins: [...state.pins], loading: true };
 
     case "SEARCH_FORM_CHANGE":
@@ -45,10 +45,10 @@ const pinsReducer = (state = initialState, action) => {
         },
       };
 
-    case "DELETING_PIN_DATA":
+    case "DELETING_PIN":
       return { ...state, loading: true };
 
-    case "DELETE_PIN_SUCCESS":
+    case "DELETE_PIN":
       return {
         ...state,
         pins: [...state.pins.filter((pin) => pin.id !== action.payload)],
