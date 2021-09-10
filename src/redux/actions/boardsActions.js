@@ -1,23 +1,33 @@
 const API = "http://localhost:3000/api/v1";
 
-export const GET_BOARDS = (boards) => ({ type: "GET_BOARDS", payload: boards });
-export const ADD_BOARD = (board) => ({
-  type: "ADD_BOARD",
+export const FETCH_BOARD_SUCCESS = (boards) => ({
+  type: "FETCH_BOARD_SUCCESS",
+  payload: boards,
+});
+export const ADD_BOARD_SUCCESS = (board) => ({
+  type: "ADD_BOARD_SUCCESS",
   payload: board,
 });
 
 export const getBoards = () => {
   const token = localStorage.getItem("token");
   return (dispatch) => {
-    dispatch({ type: "LOADING_BOARDS" });
+    dispatch({ type: "FETCH_BOARD_DATA" });
     if (token) {
       fetch(API + "/boards", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
-        .then((resp) => resp.json())
-        .then((boards) => dispatch(GET_BOARDS(boards)));
+        .then((resp) => {
+          if (!resp.ok) {
+            throw new Error(resp);
+          } else {
+            return resp.json();
+          }
+        })
+        .then((boards) => dispatch(FETCH_BOARD_SUCCESS(boards)))
+        .catch((e) => console.log(e));
     }
   };
 };
@@ -25,7 +35,7 @@ export const getBoards = () => {
 export const addBoard = (boardData, history) => {
   const token = localStorage.getItem("token");
   return (dispatch) => {
-    dispatch({ type: "ADDING_BOARD" });
+    dispatch({ type: "ADDING_BOARD_DATA" });
     let configObj = {
       method: "POST",
       headers: {
@@ -35,15 +45,17 @@ export const addBoard = (boardData, history) => {
       body: JSON.stringify(boardData),
     };
     fetch(API + "/boards", configObj)
-      .then((res) => res.json())
-      .then((board) => {
-        if (board.error) {
-          alert(board.error);
+      .then((resp) => {
+        if (!resp.ok) {
+          throw new Error(resp);
         } else {
-          dispatch(ADD_BOARD(board));
-          history.push("/boards");
+          return resp.json();
         }
       })
-      .catch(console.log);
+      .then((board) => {
+        dispatch(ADD_BOARD_SUCCESS(board));
+        history.push("/boards");
+      })
+      .catch((e) => console.log(e));
   };
 };
