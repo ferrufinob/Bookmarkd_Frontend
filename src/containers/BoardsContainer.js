@@ -2,12 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
-// import { getBoards } from "../redux/actions/boardsActions";
 import BoardsList from "../components/board/BoardsList";
 class BoardsContainer extends Component {
-  // componentDidMount() {
-  //   this.props.getBoards();
-  // }
   render() {
     const { user, loading } = this.props;
 
