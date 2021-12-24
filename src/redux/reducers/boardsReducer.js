@@ -18,6 +18,17 @@ const boardsReducer = (state = initialState, action) => {
     case "ADDING_BOARD":
       return { ...state, boards: [...state.boards], loading: true };
 
+    case "DELETING_BOARD":
+      return { ...state, loading: true };
+
+    case "DELETE_PIN":
+      return {
+        ...state,
+        boards: [
+          ...state.boards.filter((board) => board.id !== action.payload),
+        ],
+        loading: false,
+      };
     default:
       return state;
   }

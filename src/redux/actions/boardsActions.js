@@ -9,6 +9,11 @@ export const ADD_BOARD = (board) => ({
   payload: board,
 });
 
+export const DELETE_BOARD = (board) => ({
+  type: "DELETE_BOARD",
+  payload: board,
+});
+
 export const getBoards = () => {
   const token = localStorage.getItem("token");
   return (dispatch) => {
@@ -54,6 +59,33 @@ export const addBoard = (boardData, history) => {
       })
       .then((board) => {
         dispatch(ADD_BOARD(board));
+        history.push("/boards");
+      })
+      .catch((e) => console.log(e));
+  };
+};
+
+export const deleteBoard = (id, history) => {
+  return (dispatch) => {
+    dispatch({ type: "DELETING_BOARD" });
+    let configObj = {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(id),
+    };
+    fetch(API + "/pins/" + id, configObj)
+      .then((resp) => {
+        if (!resp.ok) {
+          throw new Error(resp);
+        } else {
+          return resp.json();
+        }
+      })
+      .then((board) => {
+        dispatch(DELETE_BOARD(id));
         history.push("/boards");
       })
       .catch((e) => console.log(e));
