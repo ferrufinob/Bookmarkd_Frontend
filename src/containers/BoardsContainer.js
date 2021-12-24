@@ -3,10 +3,14 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import BoardsList from "../components/board/BoardsList";
+import { deleteBoard } from "../redux/actions/boardsActions";
 class BoardsContainer extends Component {
   render() {
     const { user, loading } = this.props;
 
+    const handleDelete = (id) => {
+      this.props.deleteBoard(id, this.props.history);
+    };
     return (
       <>
         {!loading ? (
@@ -17,7 +21,13 @@ class BoardsContainer extends Component {
             </UserInfo>
             <BoardWrapper>
               {this.props.boards.map((board) =>
-                board ? <BoardsList key={board.id} {...board} /> : null
+                board ? (
+                  <BoardsList
+                    key={board.id}
+                    {...board}
+                    handleDelete={handleDelete}
+                  />
+                ) : null
               )}
             </BoardWrapper>
           </>
@@ -56,4 +66,4 @@ const UserInfo = styled.h1`
   text-align: center;
   margin-top: 100px;
 `;
-export default connect(mapStateToProps)(BoardsContainer);
+export default connect(mapStateToProps, { deleteBoard })(BoardsContainer);

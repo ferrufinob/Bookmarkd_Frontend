@@ -21,7 +21,7 @@ const boardsReducer = (state = initialState, action) => {
     case "DELETING_BOARD":
       return { ...state, loading: true };
 
-    case "DELETE_PIN":
+    case "DELETE_BOARD":
       return {
         ...state,
         boards: [

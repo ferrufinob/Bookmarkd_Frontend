@@ -106,8 +106,11 @@ class App extends Component {
           />
           <Route
             path="/boards"
-            render={() => (
-              <BoardsContainer user={this.props.user.currentUser} />
+            render={(routerProps) => (
+              <BoardsContainer
+                user={this.props.user.currentUser}
+                {...routerProps}
+              />
             )}
           />
         </Switch>

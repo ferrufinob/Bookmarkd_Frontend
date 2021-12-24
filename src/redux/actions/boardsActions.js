@@ -76,7 +76,7 @@ export const deleteBoard = (id, history) => {
       },
       body: JSON.stringify(id),
     };
-    fetch(API + "/pins/" + id, configObj)
+    fetch(API + "/boards/" + id, configObj)
       .then((resp) => {
         if (!resp.ok) {
           throw new Error(resp);

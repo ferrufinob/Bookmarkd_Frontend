@@ -23,6 +23,7 @@ class BoardDisplay extends Component {
         return <PinsList key={pin.id} {...pin} />;
       });
   };
+
   render() {
     return (
       <>

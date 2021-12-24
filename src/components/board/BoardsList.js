@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 const BoardsList = (props) => {
   const { name, id } = props;
@@ -25,6 +26,11 @@ const BoardsList = (props) => {
       <Link to={`/boards/${id}/pins`}>
         <Wrapper>{boardPinImages()}</Wrapper>
         <figcaption>{name}</figcaption>
+        <DeleteIcon
+          onClick={() => {
+            if (window.confirm("Are you sure?")) props.handleDelete(id);
+          }}
+        ></DeleteIcon>
       </Link>
     </>
   );
